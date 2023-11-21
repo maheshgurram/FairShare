@@ -1,0 +1,511 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VeryfiLens
+import AVFAudio
+import AVFoundation
+import AWSS3
+import Accelerate
+import Contacts
+import CoreLocation
+import CoreMedia
+import CoreTelephony
+import CoreVideo
+import Foundation
+import MessageUI
+import MobileCoreServices
+import PhotosUI
+import Speech
+import Swift
+import SystemConfiguration
+import UIKit
+import UserNotifications
+@_exported import VeryfiLens
+import VeryfiLens_Private
+import Vision
+import _Concurrency
+@IBDesignable extension UIKit.UIView {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var cornerRadius: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(radius)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var borderWidth: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(borderWidth)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var borderColor: UIKit.UIColor? {
+    @objc get
+    @objc set(color)
+  }
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensCostCode) public class VeryfiLensCostCode : ObjectiveC.NSObject, Foundation.NSSecureCoding {
+  @objc public static var supportsSecureCoding: Swift.Bool
+  @objc public var costCodeId: Foundation.NSNumber
+  @objc public var code: Swift.String
+  @objc public var desc: Swift.String
+  @objc public var name: Swift.String
+  @objc public var type: Swift.String
+  @objc public var hasCostCode: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc public init(costCodeId: Foundation.NSNumber = 0, code: Swift.String = "", desc: Swift.String = "", name: Swift.String = "", type: Swift.String = "")
+  @objc public init(with dictionary: Foundation.NSDictionary?)
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc public protocol MenuViewControllerDelegate : ObjectiveC.NSObjectProtocol {
+  @objc func menuViewShowEmail()
+  @objc func menuViewShowVoice()
+  @objc func menuViewShowGallery()
+  @objc func menuViewShowBrowse()
+  @objc func menuViewShowSettings()
+  @objc func menuViewShowShield()
+  @objc func menuViewDidUpdateUserSettings()
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class MenuViewController : PopupViewController {
+  @objc @_Concurrency.MainActor(unsafe) public var emailText: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var enableEmail: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var enableVoice: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var enableGallery: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var enableBrowse: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var enableSettings: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var enableShield: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) weak public var menuDelegate: MenuViewControllerDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) override public var popupHeight: CoreGraphics.CGFloat {
+    @_Concurrency.MainActor(unsafe) get
+  }
+  @_Concurrency.MainActor(unsafe) override public var popupTopCornerRadius: CoreGraphics.CGFloat {
+    @_Concurrency.MainActor(unsafe) get
+  }
+  @_Concurrency.MainActor(unsafe) override public var popupPresentDuration: Swift.Double {
+    @_Concurrency.MainActor(unsafe) get
+  }
+  @_Concurrency.MainActor(unsafe) override public var popupDismissDuration: Swift.Double {
+    @_Concurrency.MainActor(unsafe) get
+  }
+  @_Concurrency.MainActor(unsafe) override public var popupShouldDismissInteractivelty: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) get
+  }
+  @_Concurrency.MainActor(unsafe) override public var popupDimmingViewAlpha: CoreGraphics.CGFloat {
+    @_Concurrency.MainActor(unsafe) get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc(Credentials) public protocol Credentials : ObjectiveC.NSObjectProtocol {
+  @objc var clientId: Swift.String { get }
+  @objc var username: Swift.String { get }
+  @objc var apiKey: Swift.String { get }
+  @objc var url: Swift.String { get }
+  @objc init(clientId: Swift.String, username: Swift.String, apiKey: Swift.String, url: Swift.String)
+}
+public enum ReachabilityError : Swift.Error {
+  case failedToCreateWithAddress(Darwin.sockaddr, Swift.Int32)
+  case failedToCreateWithHostname(Swift.String, Swift.Int32)
+  case unableToSetCallback(Swift.Int32)
+  case unableToSetDispatchQueue(Swift.Int32)
+  case unableToGetFlags(Swift.Int32)
+}
+@available(*, unavailable, renamed: "Notification.Name.reachabilityChanged")
+public let ReachabilityChangedNotification: Foundation.NSNotification.Name
+extension Foundation.NSNotification.Name {
+  public static let reachabilityChanged: Foundation.Notification.Name
+}
+public class ReachabilityNetwork {
+  public typealias NetworkReachable = (ReachabilityNetwork) -> ()
+  public typealias NetworkUnreachable = (ReachabilityNetwork) -> ()
+  @available(*, unavailable, renamed: "Connection")
+  public enum NetworkStatus : Swift.CustomStringConvertible {
+    case notReachable, reachableViaWiFi, reachableViaWWAN
+    public var description: Swift.String {
+      get
+    }
+    public static func == (a: ReachabilityNetwork.NetworkStatus, b: ReachabilityNetwork.NetworkStatus) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Connection : Swift.CustomStringConvertible {
+    case unavailable, wifi, cellular
+    public var description: Swift.String {
+      get
+    }
+    @available(*, deprecated, renamed: "unavailable")
+    public static let none: ReachabilityNetwork.Connection
+    public static func == (a: ReachabilityNetwork.Connection, b: ReachabilityNetwork.Connection) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var whenReachable: ReachabilityNetwork.NetworkReachable?
+  public var whenUnreachable: ReachabilityNetwork.NetworkUnreachable?
+  @available(*, deprecated, renamed: "allowsCellularConnection")
+  final public let reachableOnWWAN: Swift.Bool
+  public var allowsCellularConnection: Swift.Bool
+  public var notificationCenter: Foundation.NotificationCenter
+  @available(*, deprecated, renamed: "connection.description")
+  public var currentReachabilityString: Swift.String {
+    get
+  }
+  @available(*, unavailable, renamed: "connection")
+  public var currentReachabilityStatus: ReachabilityNetwork.Connection {
+    get
+  }
+  public var connection: ReachabilityNetwork.Connection {
+    get
+  }
+  required public init(reachabilityRef: SystemConfiguration.SCNetworkReachability, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main)
+  convenience public init(hostname: Swift.String, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main) throws
+  convenience public init(queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main) throws
+  @objc deinit
+}
+extension ReachabilityNetwork {
+  public func startNotifier() throws
+  public func stopNotifier()
+  @available(*, deprecated, message: "Please use `connection != .none`")
+  public var isReachable: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Please use `connection == .cellular`")
+  public var isReachableViaWWAN: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Please use `connection == .wifi`")
+  public var isReachableViaWiFi: Swift.Bool {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+}
+@objc public protocol Reachable : ObjectiveC.NSObjectProtocol {
+  @objc var reachableBlock: (() -> ())? { get set }
+  @objc var unreachableBlock: (() -> ())? { get set }
+  @objc var isReachable: Swift.Bool { get }
+  @objc var isReachableViaWWAN: Swift.Bool { get }
+  @objc var isReachableViaWiFi: Swift.Bool { get }
+}
+@objc(VeryfiLensDelegate) public protocol VeryfiLensDelegate {
+  @objc func veryfiLensClose(_ json: [Swift.String : Any])
+  @objc func veryfiLensError(_ json: [Swift.String : Any])
+  @objc func veryfiLensSuccess(_ json: [Swift.String : Any])
+  @objc func veryfiLensUpdate(_ json: [Swift.String : Any])
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class VeryfiLens : ObjectiveC.NSObject {
+  @objc public class func shared() -> VeryfiLens
+  @objc public var credentials: VeryfiLensCredentials {
+    @objc get
+  }
+  @objc public var settings: VeryfiLensSettings {
+    @objc get
+  }
+  @objc public var utils: VeryfiLensUtils {
+    @objc get
+  }
+  @objc weak public var delegate: VeryfiLensDelegate?
+  @objc public func configure(with credentials: VeryfiLensCredentials, settings: VeryfiLensSettings, completion: ((Swift.Bool) -> ())? = nil)
+  @objc public func showCamera(in viewController: UIKit.UIViewController)
+  @objc public func showGallery(in viewController: UIKit.UIViewController)
+  @objc public func showDocumentBrowser(in viewController: UIKit.UIViewController)
+  @objc public func showVoice(in viewController: UIKit.UIViewController)
+  @objc public func showEmail(in viewController: UIKit.UIViewController)
+  @objc public func showCrop(in viewController: UIKit.UIViewController, image: UIKit.UIImage, completion: ((UIKit.UIImage?) -> Swift.Void)? = nil)
+  @objc public func headlessUpload(images: [UIKit.UIImage])
+  @objc public func headlessUpload(url: Foundation.URL)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) open class PopupViewController : UIKit.UIViewController, PopupAttributesDelegate {
+  @_Concurrency.MainActor(unsafe) weak open var popupDelegate: PopupDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) open var popupHeight: CoreGraphics.CGFloat {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var popupTopCornerRadius: CoreGraphics.CGFloat {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var popupPresentDuration: Swift.Double {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var popupDismissDuration: Swift.Double {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var popupShouldDismissInteractivelty: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var popupDimmingViewAlpha: CoreGraphics.CGFloat {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var popupShouldBeganDismiss: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var popupViewAccessibilityIdentifier: Swift.String {
+    get
+  }
+  @objc deinit
+}
+@objc public enum CustomerOrProject : Swift.Int {
+  case customer
+  case project
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensCPModel) public class VeryfiLensCPModel : ObjectiveC.NSObject, Foundation.NSSecureCoding {
+  @objc public static var supportsSecureCoding: Swift.Bool
+  @objc public var primaryCP: CustomerOrProject
+  @objc public var customerId: Foundation.NSNumber
+  @objc public var customerName: Swift.String
+  @objc public var projectId: Foundation.NSNumber?
+  @objc public var projectName: Swift.String?
+  @objc override dynamic public init()
+  @objc(initWithDictionary:) public init(dictionary: [Swift.String : Any])
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc(fusedId) public func fusedId() -> Swift.String
+  @objc(displayName) public func displayName() -> Swift.String
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensTag) public class VeryfiLensTag : ObjectiveC.NSObject, Foundation.NSSecureCoding {
+  @objc public static var supportsSecureCoding: Swift.Bool
+  @objc public var tagId: Foundation.NSNumber
+  @objc public var name: Swift.String
+  @objc public var currency: VeryfiLensCurrency
+  @objc public var spent: Swift.Double
+  @objc public var receiptsCount: Swift.Int
+  @objc public var status: Swift.String
+  @objc public var type: Swift.String
+  @objc override dynamic public init()
+  @objc(initWithDictionary:) public init(dictionary: [Swift.String : Any]? = nil)
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc(getFormattedTotalWithCurrency) public func total() -> Swift.String
+  @objc(wasSourcedExternally) public func wasSourcedExternally() -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensUtils) public class VeryfiLensUtils : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public init(credentials: VeryfiLensCredentials, settings: VeryfiLensSettings, completion: ((Swift.Bool) -> ())?)
+  @objc public func update(settings: VeryfiLensSettings)
+  @objc public func packagesInQueue() -> [Swift.String]
+  @objc public func retryAllPackages()
+  @objc(retryPackageWithID:) public func retryPackage(with packageID: Swift.String)
+  @objc public func discardAllPackages()
+  @objc public func discardPackage(with packageID: Swift.String)
+  @objc public func getImages(from packageID: Swift.String) -> [UIKit.UIImage]
+  @objc public func getMetaData(from packageID: Swift.String) -> [[Swift.AnyHashable : Any]]
+  @objc public func getPdfURL(from packageID: Swift.String) -> Foundation.URL?
+  @objc public func base64(for data: Foundation.Data) -> Swift.String
+  @objc public var version: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensCurrency) public class VeryfiLensCurrency : ObjectiveC.NSObject, Foundation.NSSecureCoding {
+  @objc public static var supportsSecureCoding: Swift.Bool
+  @objc public var code: Swift.String
+  @objc public var name: Swift.String
+  @objc public var symbol: Swift.String
+  @objc public var isRecent: Swift.Bool
+  @objc override dynamic public init()
+  @objc(initWithDictionary:) public init(dictionary: [Swift.String : Any]? = nil)
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc(getDeviceCurrencyInfo) public static func currencyInfo() -> [Swift.String : Any]
+  @objc(asDict) public func json() -> [Swift.String : Any]
+  @objc deinit
+}
+@objc(VeryfiLensCredentials) public class VeryfiLensCredentials : ObjectiveC.NSObject, Credentials {
+  @objc final public let clientId: Swift.String
+  @objc final public let username: Swift.String
+  @objc final public let apiKey: Swift.String
+  @objc final public let url: Swift.String
+  @objc required public init(clientId: Swift.String, username: Swift.String, apiKey: Swift.String, url: Swift.String)
+  @objc public init(with dictionary: [Swift.String : Any])
+  @objc deinit
+}
+@objc(DataExtractionEngine) public enum DataExtractionEngine : Swift.Int {
+  case cloudAPI
+  case inApp
+  case none
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensSettings) public class VeryfiLensSettings : ObjectiveC.NSObject, Foundation.NSSecureCoding {
+  @objc public var autoDocDetectionAndCropIsOn: Swift.Bool
+  @objc public var autoDeleteAfterProcessing: Swift.Bool
+  @objc public var autoLightDetectionIsOn: Swift.Bool
+  @objc public var autoCaptureIsOn: Swift.Bool
+  @objc public var autoRotateIsOn: Swift.Bool
+  @objc public var autoSkewCorrectionIsOn: Swift.Bool
+  @objc public var autoCropGalleryIsOn: Swift.Bool
+  @objc public var autoSubmitDocumentOnCapture: Swift.Bool
+  @objc public var backupDocsToGallery: Swift.Bool
+  @objc public var barcodeExtractionIsOn: Swift.Bool
+  @objc public var blurDetectionIsOn: Swift.Bool
+  @objc public var boostModeIsOn: Swift.Bool
+  @objc public var boundingBoxesIsOn: Swift.Bool
+  @objc public var brandImage: UIKit.UIImage?
+  @objc public var browseIsOn: Swift.Bool
+  @objc public var categories: [Swift.String]
+  @objc public var checksBackIsOn: Swift.Bool
+  @objc public var closeCameraOnSubmit: Swift.Bool
+  @objc public var confidenceDetailsIsOn: Swift.Bool
+  @objc public var dataExtractionEngine: DataExtractionEngine
+  @objc public var detectBlurResponseIsOn: Swift.Bool
+  @objc public var dictateIsOn: Swift.Bool
+  @objc public var allowSubmitUndetectedDocsIsOn: Swift.Bool
+  @objc public var documentTypes: [Swift.String]
+  @objc public var docDetectFillUIColor: UIKit.UIColor?
+  @objc public var docDetectStrokeUIColor: UIKit.UIColor?
+  @objc public var emailCCIsOn: Swift.Bool
+  @objc public var emailCCDomain: Swift.String
+  @objc public var externalId: Swift.String?
+  @objc public var galleryIsOn: Swift.Bool
+  @objc public var gpuIsOn: Swift.Bool
+  @objc public var isReimbursableDefault: Swift.Bool
+  @objc public var isProduction: Swift.Bool
+  @objc public var locationServicesIsOn: Swift.Bool
+  @objc public var manualCropIsOn: Swift.Bool
+  @objc public var moreMenuIsOn: Swift.Bool
+  @objc public var moreSettingsMenuIsOn: Swift.Bool
+  @objc public var multipleDocumentsIsOn: Swift.Bool
+  @objc public var originalImageMaxSizeInMB: Swift.Double
+  @objc public var parseAddressIsOn: Swift.Bool
+  @objc public var rotateDocIsOn: Swift.Bool
+  @objc public var returnStitchedPDF: Swift.Bool
+  @objc public var saveLogIsOn: Swift.Bool
+  @objc public var shareLogsIsOn: Swift.Bool
+  @objc public var stitchIsOn: Swift.Bool
+  @objc public var showDocumentTypes: Swift.Bool
+  @objc public var shieldProtectionIsOn: Swift.Bool
+  @objc public var stitchedPDFPixelDensityMultiplier: Swift.Double
+  @objc public var submitButtonBackgroundColor: Swift.String
+  @objc public var submitButtonBorderColor: Swift.String
+  @objc public var submitButtonCornerRadius: Swift.Int
+  @objc public var submitButtonFontColor: Swift.String
+  @objc public var costCodes: [VeryfiLensCostCode]?
+  @objc public var customers: [VeryfiLensCPModel]?
+  @objc public var tags: [VeryfiLensTag]?
+  @objc public var categoriesList: [VeryfiLensCategory]?
+  @objc public var categoryName: Swift.String?
+  @objc public var tagName: Swift.String?
+  @objc public func string(from dataExtractionEngine: DataExtractionEngine) -> Swift.String
+  @objc public var json: [Swift.String : Any] {
+    @objc get
+  }
+  @objc public static var supportsSecureCoding: Swift.Bool
+  @objc override dynamic public init()
+  @objc public init(with dictionary: [Swift.String : Any]? = nil)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc public protocol CollectUpfrontPopupViewControllerDelegate {
+  @objc(updateCategoryName:) func update(category: VeryfiLensCategory?)
+  @objc(updateTagName:) func update(tag: VeryfiLensTag?)
+  @objc(updateCustomerProjectName:) func update(customer: VeryfiLensCPModel?)
+  @objc(updateCostCodeName:) func update(costCode: VeryfiLensCostCode?)
+  @objc(updateNotes:) func update(notes: Swift.String?)
+  @objc(didSubmit) func didSubmit()
+  @objc(closeUpfront) func closeUpfront()
+  @objc(getCategory) func getCategory() -> VeryfiLensCategory?
+  @objc(getTag) func getTag() -> VeryfiLensTag?
+  @objc(getCustomer) func getCustomer() -> VeryfiLensCPModel?
+  @objc(getCostCode) func getCostCode() -> VeryfiLensCostCode?
+  @objc(getNotes) func getNotes() -> Swift.String?
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class CollectUpfrontPopupViewController : UIKit.UIViewController {
+  @objc @_Concurrency.MainActor(unsafe) public var isHidden: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var isCategoryEnabled: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var isTagEnabled: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var isCustomerEnabled: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var isCostCodeEnabled: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var isNotesEnabled: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public func hide()
+  @objc @_Concurrency.MainActor(unsafe) public var delegate: CollectUpfrontPopupViewControllerDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @objc @_Concurrency.MainActor(unsafe) public func initializeWithPresetValues(category: VeryfiLensCategory?, costCode: VeryfiLensCostCode?, fusedCP: VeryfiLensCPModel?, tag: VeryfiLensTag?, note: Swift.String?)
+  @objc @_Concurrency.MainActor(unsafe) public func show()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol PopupDelegate : AnyObject {
+  func popupViewLoaded()
+  func popupWillAppear()
+  func popupDidAppear()
+  func popupWillDismiss()
+  func popupDidDismiss()
+  func popupDismissInteractionPercentChanged(from oldValue: CoreGraphics.CGFloat, to newValue: CoreGraphics.CGFloat)
+}
+extension PopupDelegate {
+  public func popupViewLoaded()
+  public func popupWillAppear()
+  public func popupDidAppear()
+  public func popupWillDismiss()
+  public func popupDidDismiss()
+  public func popupDismissInteractionPercentChanged(from oldValue: CoreGraphics.CGFloat, to newValue: CoreGraphics.CGFloat)
+}
+public protocol PopupAttributesDelegate : AnyObject {
+  var popupHeight: CoreGraphics.CGFloat { get }
+  var popupTopCornerRadius: CoreGraphics.CGFloat { get }
+  var popupPresentDuration: Swift.Double { get }
+  var popupDismissDuration: Swift.Double { get }
+  var popupShouldDismissInteractivelty: Swift.Bool { get }
+  var popupDimmingViewAlpha: CoreGraphics.CGFloat { get }
+  var popupShouldBeganDismiss: Swift.Bool { get }
+  var popupViewAccessibilityIdentifier: Swift.String { get }
+}
+public struct PopupConstants {
+}
+@_inheritsConvenienceInitializers @objc(VeryfiLensCategory) public class VeryfiLensCategory : ObjectiveC.NSObject, Foundation.NSSecureCoding {
+  @objc public static var supportsSecureCoding: Swift.Bool
+  @objc public var categoryId: Foundation.NSNumber
+  @objc public var name: Swift.String
+  @objc public var monthlyBudget: Swift.Double
+  @objc public var currency: VeryfiLensCurrency
+  @objc public var spent: Swift.Double
+  @objc public var receiptsCount: Swift.Int
+  @objc public var type: Swift.String
+  @objc public var mimo: Swift.String
+  @objc override dynamic public init()
+  @objc(initWithDictionary:) public init(dictionary: [Swift.String : Any])
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc(getFormattedTotalWithCurrency) public func total() -> Swift.String
+  @objc(getTypeNameFromTypeKey:) public static func getTypeName(from typeKey: Swift.String) -> Swift.String
+  @objc(types) public static func types() -> [Swift.String : Swift.String]
+  @objc deinit
+}
+@available(*, unavailable, renamed: "Connection")
+extension ReachabilityNetwork.NetworkStatus : Swift.Equatable {}
+@available(*, unavailable, renamed: "Connection")
+extension ReachabilityNetwork.NetworkStatus : Swift.Hashable {}
+extension ReachabilityNetwork.Connection : Swift.Equatable {}
+extension ReachabilityNetwork.Connection : Swift.Hashable {}
+extension CustomerOrProject : Swift.Equatable {}
+extension CustomerOrProject : Swift.Hashable {}
+extension CustomerOrProject : Swift.RawRepresentable {}
+extension DataExtractionEngine : Swift.Equatable {}
+extension DataExtractionEngine : Swift.Hashable {}
+extension DataExtractionEngine : Swift.RawRepresentable {}

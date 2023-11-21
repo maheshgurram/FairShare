@@ -1,0 +1,31 @@
+framework module VeryfiLens {
+    umbrella header "VeryfiLens.h"
+    
+    export *
+    module * { export * }
+
+    explicit module VeryfiLens_Private {
+      header "SubmitButton.h"
+      header "SNotesViewController.h"
+      header "SCostCodesTableViewController.h"
+      header "SFusedCPTableViewController.h"
+      header "STagsTableViewController.h"
+      header "SCategoriesTableViewController.h"
+      header "ZipHelper.h"
+      header "EncryptionHelper.h"
+      header "SCSiriWaveformView.h"
+      header "EncryptionHelper.h"
+      header "ImageHelperObjC.h"
+      header "DataHelperObjC.h"
+      header "ScanViewController.h"
+      header "CropViewController.h"
+      export *
+    }
+}
+
+
+
+module VeryfiLens.Swift {
+    header "VeryfiLens-Swift.h"
+    requires objc
+}
