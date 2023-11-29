@@ -74,7 +74,7 @@ extension TransferRequestStatusViewController: UITableViewDataSource, UITableVie
             // add logic to divide the total cost
             let individualSplit = (Double(quantity) * totalCost) / Double(assignedUsers.count)
             
-//            cell.configureView(with: assignedUsers[indexPath.row], amount: individualSplit)
+            cell.configureView(with: assignedUsers[indexPath.row], amount: individualSplit)
 //            cell.delegate = self
         }
         
