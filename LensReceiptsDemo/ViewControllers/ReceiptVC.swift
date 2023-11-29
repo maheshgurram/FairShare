@@ -43,6 +43,16 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let nib = UINib.init(nibName: "LineItemCell", bundle: nil)
         self.receiptTableView.register(nib, forCellReuseIdentifier: "LineItemCell")
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let initiateRequestVC = segue.destination as? InitiateRequestViewController else { return }
+        
+        if let items = receiptData?.data?.items {
+            let selectedItems = items.filter{ item in item.assignedUsers?.count ?? 0 > 0 }
+                initiateRequestVC.selectedItemsForSplit = selectedItems
+        }
+        
+    }
 
     // MARK: - Table view data source
 

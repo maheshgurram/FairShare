@@ -26,6 +26,14 @@
 		9D53207827ECC35C0067CE79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D53207627ECC35C0067CE79 /* Main.storyboard */; };
 		9D53207A27ECC35E0067CE79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D53207927ECC35E0067CE79 /* Assets.xcassets */; };
 		9D53207D27ECC35E0067CE79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D53207B27ECC35E0067CE79 /* LaunchScreen.storyboard */; };
+		E88391782B17882500E3934F /* InitiateRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88391772B17882500E3934F /* InitiateRequestViewController.swift */; };
+		E883917B2B179D0600E3934F /* SplitItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88391792B179D0600E3934F /* SplitItemTableViewCell.swift */; };
+		E883917C2B179D0600E3934F /* SplitItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E883917A2B179D0600E3934F /* SplitItemTableViewCell.xib */; };
+		E883917F2B179FA800E3934F /* SplitItemWithContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883917D2B179FA800E3934F /* SplitItemWithContactsTableViewCell.swift */; };
+		E88391802B179FA800E3934F /* SplitItemWithContactsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E883917E2B179FA800E3934F /* SplitItemWithContactsTableViewCell.xib */; };
+		E88391822B17D51800E3934F /* TransferRequestStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88391812B17D51800E3934F /* TransferRequestStatusViewController.swift */; };
+		E88391852B17D98200E3934F /* IndividualStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88391832B17D98200E3934F /* IndividualStatusTableViewCell.swift */; };
+		E88391862B17D98200E3934F /* IndividualStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E88391842B17D98200E3934F /* IndividualStatusTableViewCell.xib */; };
 		E8CE49D52B052B3A009ED9E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CE49D42B052B3A009ED9E7 /* LoginViewController.swift */; };
 		E8CE49D72B0530BC009ED9E7 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CE49D62B0530BC009ED9E7 /* DashboardViewController.swift */; };
 		E8CE49D92B05356A009ED9E7 /* TransactionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CE49D82B05356A009ED9E7 /* TransactionsListViewController.swift */; };
@@ -57,6 +65,14 @@
 		9D53207C27ECC35E0067CE79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D53207E27ECC35E0067CE79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA2F877C10C461419E4D0CE4 /* Pods-LensReceiptsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LensReceiptsDemo.debug.xcconfig"; path = "Target Support Files/Pods-LensReceiptsDemo/Pods-LensReceiptsDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		E88391772B17882500E3934F /* InitiateRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateRequestViewController.swift; sourceTree = "<group>"; };
+		E88391792B179D0600E3934F /* SplitItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitItemTableViewCell.swift; sourceTree = "<group>"; };
+		E883917A2B179D0600E3934F /* SplitItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplitItemTableViewCell.xib; sourceTree = "<group>"; };
+		E883917D2B179FA800E3934F /* SplitItemWithContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitItemWithContactsTableViewCell.swift; sourceTree = "<group>"; };
+		E883917E2B179FA800E3934F /* SplitItemWithContactsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplitItemWithContactsTableViewCell.xib; sourceTree = "<group>"; };
+		E88391812B17D51800E3934F /* TransferRequestStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferRequestStatusViewController.swift; sourceTree = "<group>"; };
+		E88391832B17D98200E3934F /* IndividualStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualStatusTableViewCell.swift; sourceTree = "<group>"; };
+		E88391842B17D98200E3934F /* IndividualStatusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndividualStatusTableViewCell.xib; sourceTree = "<group>"; };
 		E8CE49D42B052B3A009ED9E7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E8CE49D62B0530BC009ED9E7 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		E8CE49D82B05356A009ED9E7 /* TransactionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +108,14 @@
 				E8CE49D82B05356A009ED9E7 /* TransactionsListViewController.swift */,
 				E8CE49DA2B054D1A009ED9E7 /* TransactionDetailViewController.swift */,
 				E8CE49DC2B0564F1009ED9E7 /* FaceIdViewController.swift */,
+				E88391772B17882500E3934F /* InitiateRequestViewController.swift */,
+				E88391792B179D0600E3934F /* SplitItemTableViewCell.swift */,
+				E883917A2B179D0600E3934F /* SplitItemTableViewCell.xib */,
+				E883917D2B179FA800E3934F /* SplitItemWithContactsTableViewCell.swift */,
+				E883917E2B179FA800E3934F /* SplitItemWithContactsTableViewCell.xib */,
+				E88391812B17D51800E3934F /* TransferRequestStatusViewController.swift */,
+				E88391832B17D98200E3934F /* IndividualStatusTableViewCell.swift */,
+				E88391842B17D98200E3934F /* IndividualStatusTableViewCell.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -220,12 +244,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D53207D27ECC35E0067CE79 /* LaunchScreen.storyboard in Resources */,
+				E883917C2B179D0600E3934F /* SplitItemTableViewCell.xib in Resources */,
 				3D303C182AFD4B8000507DD7 /* Receipts.storyboard in Resources */,
 				9D53207A27ECC35E0067CE79 /* Assets.xcassets in Resources */,
 				3D303C222AFD964300507DD7 /* Contacts.storyboard in Resources */,
 				3D303C1C2AFD6F6A00507DD7 /* LineItemCell.xib in Resources */,
 				9D53207827ECC35C0067CE79 /* Main.storyboard in Resources */,
 				3D303C262AFD98C100507DD7 /* ContactCell.xib in Resources */,
+				E88391862B17D98200E3934F /* IndividualStatusTableViewCell.xib in Resources */,
+				E88391802B179FA800E3934F /* SplitItemWithContactsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +325,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8CE49DD2B0564F1009ED9E7 /* FaceIdViewController.swift in Sources */,
+				E883917B2B179D0600E3934F /* SplitItemTableViewCell.swift in Sources */,
+				E883917F2B179FA800E3934F /* SplitItemWithContactsTableViewCell.swift in Sources */,
 				E8CE49D52B052B3A009ED9E7 /* LoginViewController.swift in Sources */,
 				E8CE49DB2B054D1A009ED9E7 /* TransactionDetailViewController.swift in Sources */,
 				E8CE49D92B05356A009ED9E7 /* TransactionsListViewController.swift in Sources */,
@@ -306,11 +335,14 @@
 				3D303C1B2AFD6F6A00507DD7 /* LineItemCell.swift in Sources */,
 				3D303C102AFC2A2400507DD7 /* JSONSaveLoad.swift in Sources */,
 				9D53207527ECC35C0067CE79 /* ViewController.swift in Sources */,
+				E88391782B17882500E3934F /* InitiateRequestViewController.swift in Sources */,
 				9D53207127ECC35C0067CE79 /* AppDelegate.swift in Sources */,
 				E8CE49D72B0530BC009ED9E7 /* DashboardViewController.swift in Sources */,
 				3D303C252AFD98C100507DD7 /* ContactCell.swift in Sources */,
 				9D53207327ECC35C0067CE79 /* SceneDelegate.swift in Sources */,
 				3D303C122AFD23C400507DD7 /* ReceiptData.swift in Sources */,
+				E88391852B17D98200E3934F /* IndividualStatusTableViewCell.swift in Sources */,
+				E88391822B17D51800E3934F /* TransferRequestStatusViewController.swift in Sources */,
 				3D303C0E2AFC120700507DD7 /* RowItem.swift in Sources */,
 				3D303C202AFD963700507DD7 /* ContactsVC.swift in Sources */,
 			);
