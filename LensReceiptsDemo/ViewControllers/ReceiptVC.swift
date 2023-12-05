@@ -12,7 +12,8 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var receiptTableView: UITableView!
     
-    var receiptData: ReceiptData? = nil
+//    var receiptData: ReceiptData? = nil
+    var rowItems: [RowItem]? 
     var contacts: [Contact] = []
     var selRowItem: Int? = nil
     
@@ -38,7 +39,7 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         receiptTableView.estimatedRowHeight = 50
         receiptTableView.rowHeight = UITableView.automaticDimension
         
-        title = receiptData?.data?.vendor?.rawName
+//        title = receiptData?.data?.vendor?.rawName
             
         let nib = UINib.init(nibName: "LineItemCell", bundle: nil)
         self.receiptTableView.register(nib, forCellReuseIdentifier: "LineItemCell")
@@ -47,7 +48,7 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let initiateRequestVC = segue.destination as? InitiateRequestViewController else { return }
         
-        if let items = receiptData?.data?.items {
+        if let items = rowItems {
             let selectedItems = items.filter{ item in item.assignedUsers?.count ?? 0 > 0 }
                 initiateRequestVC.selectedItemsForSplit = selectedItems
         }
@@ -62,15 +63,14 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return receiptData?.data?.items?.count ?? 0
+        return rowItems?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LineItemCell", for: indexPath) as! LineItemCell
 
         // Configure the cell...
-        if let lineItem = receiptData?.data?.items?[indexPath.row] {
+        if let lineItem = rowItems?[indexPath.row] {
             cell.setup(item: lineItem, id: indexPath.row)
             cell.delegate = self
         }
@@ -193,7 +193,7 @@ extension ReceiptVC: ContactsVCDelegate {
         // Received the sel User
         
         if let cont = contact, let id = selRowItem {
-            receiptData?.data?.items?[id].assignedUsers?.append(cont)
+            rowItems?[id].assignedUsers?.append(cont)
             self.receiptTableView.reloadData()
         }
         

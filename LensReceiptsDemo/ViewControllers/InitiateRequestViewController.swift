@@ -22,6 +22,8 @@ class InitiateRequestViewController: UIViewController {
     
 
     func setupTableView() {
+        self.title = "Initiate Request"
+        
         splitTableView.dataSource = self
         splitTableView.delegate = self
         splitTableView.separatorStyle = .singleLine
@@ -39,7 +41,6 @@ class InitiateRequestViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let requestStatusVC = segue.destination as? TransferRequestStatusViewController else { return }
         requestStatusVC.selectedItemsForSplit = selectedItemsForSplit
-        
         
     }
 

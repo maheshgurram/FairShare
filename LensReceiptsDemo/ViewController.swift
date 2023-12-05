@@ -68,7 +68,8 @@ class ViewController: UIViewController {
         
         guard let vc = UIStoryboard(name: "Receipts", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReceiptVC") as? ReceiptVC else { return }
         // Filter out items which doens't have total
-        vc.receiptData = receiptData
+//        vc.receiptData = receiptData
+        vc.rowItems = receiptData?.data?.items
         navigationController?.pushViewController(vc, animated: true)
         
         
