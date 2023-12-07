@@ -98,7 +98,48 @@ extension InitiateRequestViewController: UITableViewDataSource, UITableViewDeleg
 
 extension InitiateRequestViewController : SendRequestDelegate {
     func sendRequestSelected(for contact: Contact?, with amount: Double?) {
-        //
+        // Prepare URL
+        let url = URL(string: "https://rest.nexmo.com/sms/json")
+        guard let requestUrl = url else { fatalError() }
+        
+        // Prepare URL Request Object
+        var request = URLRequest(url: requestUrl)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type");
+        request.setValue("json", forHTTPHeaderField: "format")
+        
+        
+        request.httpMethod = "POST"
+        
+        // HTTP Request Parameters which will be sent in HTTP Request Body
+        //        let postString = "api_key:e1e36788&api_secret:QnaAShM9XH2Y9vPg&from:Mahender&to:917382561661&text:Testing by Mahender from App"
+        let postString = [
+            "api_key":"e1e36788",
+            "api_secret":"QnaAShM9XH2Y9vPg",
+            "to":"917382561661",
+            "from":"Mahender",
+            "text":"Testing by Mahender App" // transaction id, request from number, amount, request #, deep link url
+        ]
+        
+        // Set HTTP Request Body
+        request.httpBody = try? JSONSerialization.data(withJSONObject: postString, options: .withoutEscapingSlashes)
+        print("body took place \( postString )")
+        
+        // Perform HTTP Request
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            // Check for Error
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            
+            // Convert HTTP Response Data to a String
+            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                print("Response data string:\n \(dataString)")
+            }
+        }
+        task.resume()
+        
     }
     
     

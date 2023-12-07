@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.verify.LensReceiptsDemo</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fareshare</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -21,27 +34,5 @@
 			</array>
 		</dict>
 	</dict>
-    <key>NSCameraUsageDescription</key>
-    <string>Scan documents</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>Access photo gallery for document backups</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Access photo gallery for document uploads</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>Access photo gallery for document backups</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Access photo gallery for document uploads</string>
-    <key>NSSpeechRecognitionUsageDescription</key>
-    <string>Quickly add transactions via voice dictation</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Quickly add transactions via voice dictation</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Helps to identify places around you</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Helps to identify places around you</string>
-    <key>NSContactsUsageDescription</key>
-    <string>Add your ___@veryfi.cc assigned email address for reference</string>
-    <key>NSCalendarsUsageDescription</key>
-    <string>Enrich your data with business meetings and events from your Calendar</string>
 </dict>
 </plist>
