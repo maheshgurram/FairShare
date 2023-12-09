@@ -42,8 +42,8 @@ class TransactionDetailViewController: UIViewController {
         rowItem.quantity = 1
         rowItem.description = "TWIN ROCKS SPRING WATER"
         rowItem.assignedUsers = []
-        
         vc.rowItems = [rowItem]
+        vc.transactionNumber = 5709
         navigationController?.pushViewController(vc, animated: true)
     }
     

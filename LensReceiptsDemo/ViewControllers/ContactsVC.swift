@@ -8,13 +8,15 @@
 import UIKit
 
 protocol ContactsVCDelegate: NSObjectProtocol {
-    func selUser(contact: Contact?)
+    func selUsers(contacts: [Contact]?)
 }
 
 class ContactsVC: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
     @IBOutlet weak var contactsTableView: UITableView!
+    
     var contacts: [Contact] = []
+    var selectedContacts: [Contact]? 
     
     weak var delegate:ContactsVCDelegate? = nil
     
@@ -39,12 +41,30 @@ class ContactsVC: UIViewController, UITableViewDataSource, UITableViewDelegate  
         contactsTableView.translatesAutoresizingMaskIntoConstraints = false
         contactsTableView.estimatedRowHeight = 50
         contactsTableView.rowHeight = UITableView.automaticDimension
+        contactsTableView.allowsMultipleSelection = true
+        contactsTableView.allowsMultipleSelectionDuringEditing = true
         
         title = "Contacts"
             
         let nib = UINib.init(nibName: "ContactCell", bundle: nil)
         self.contactsTableView.register(nib, forCellReuseIdentifier: "ContactCell")
     }
+    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        delegate?.selUsers(contacts: selectedContacts)
+        navigationController?.popViewController(animated: true)
+
+    }
+    
+    func checkSelected(for contact: Contact) -> Bool {
+        guard let selectedContacts = selectedContacts else { return false }
+        var isSelected = false
+        let selectedContact = selectedContacts.filter({ $0.name == contact.name })
+        isSelected = selectedContact.count > 0 ? true : false
+        return isSelected
+        
+    }
+    
 
     // MARK: - Table view data source
 
@@ -64,14 +84,24 @@ class ContactsVC: UIViewController, UITableViewDataSource, UITableViewDelegate  
 
         // Configure the cell...
         cell.setup(contact:  contacts[indexPath.row])
+        if checkSelected(for: contacts[indexPath.row]) == true {
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Send the selected contact back to receipt VC
         let selContact = contacts[indexPath.row]
-        delegate?.selUser(contact: selContact)
-        navigationController?.popViewController(animated: true)
+        selectedContacts?.append(selContact)
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        // remove contact from selContacts array
+        if let index = selectedContacts?.firstIndex(where: { $0.name == contacts[indexPath.row].name }) {
+            selectedContacts?.remove(at: index)
+        }
     }
     
 

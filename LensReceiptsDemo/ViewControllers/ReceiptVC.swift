@@ -16,6 +16,7 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var rowItems: [RowItem]? 
     var contacts: [Contact] = []
     var selRowItem: Int? = nil
+    var transactionNumber: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,6 +142,11 @@ extension ReceiptVC: LineItemCellDelegate {
         guard let vc = UIStoryboard(name: "Contacts", bundle: Bundle.main).instantiateViewController(withIdentifier: "ContactsVC") as? ContactsVC else { return }
         // Filter out items which doens't have total
         vc.contacts = self.contacts
+        
+        if let index = selRowItem, let selectedRow = rowItems?[index] {
+            vc.selectedContacts = selectedRow.assignedUsers
+
+        }
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -188,16 +194,14 @@ extension ReceiptVC: LineItemCellDelegate {
 }
 
 extension ReceiptVC: ContactsVCDelegate {
-   
-    func selUser(contact: Contact?) {
+    
+    func selUsers(contacts: [Contact]?) {
         // Received the sel User
-        
-        if let cont = contact, let id = selRowItem {
-            rowItems?[id].assignedUsers?.append(cont)
+        if let contact = contacts, let id = selRowItem {
+            
+            rowItems?[id].assignedUsers = contact
             self.receiptTableView.reloadData()
         }
-        
-        
     }
 }
 

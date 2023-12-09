@@ -41,7 +41,11 @@ class InitiateRequestViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let requestStatusVC = segue.destination as? TransferRequestStatusViewController else { return }
         requestStatusVC.selectedItemsForSplit = selectedItemsForSplit
-        
+    }
+    
+    func saveFileWithDetails() {
+//        let isSaved = try? JSONSerialization.save(jsonObject: json, toFilename: "receipt")
+
     }
 
 
@@ -98,6 +102,9 @@ extension InitiateRequestViewController: UITableViewDataSource, UITableViewDeleg
 
 extension InitiateRequestViewController : SendRequestDelegate {
     func sendRequestSelected(for contact: Contact?, with amount: Double?) {
+        // create a local file to save the details
+        saveFileWithDetails()
+        
         // Prepare URL
         let url = URL(string: "https://rest.nexmo.com/sms/json")
         guard let requestUrl = url else { fatalError() }

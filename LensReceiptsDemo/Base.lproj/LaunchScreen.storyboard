@@ -18,14 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BOALaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Je0-Pi-weC">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <rect key="frame" x="0.0" y="-30" width="393" height="882"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Je0-Pi-weC" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="IYD-51-f4G"/>
-                            <constraint firstItem="Je0-Pi-weC" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Uki-ek-MVA"/>
+                            <constraint firstItem="Je0-Pi-weC" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="-30" id="Uki-ek-MVA"/>
                             <constraint firstAttribute="trailing" secondItem="Je0-Pi-weC" secondAttribute="trailing" id="qCO-bq-7uE"/>
                             <constraint firstAttribute="bottom" secondItem="Je0-Pi-weC" secondAttribute="bottom" id="zSv-pC-AOC"/>
                         </constraints>

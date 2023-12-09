@@ -62,7 +62,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JCt-6S-BEm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="816"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YrS-Sj-j9s">
@@ -71,18 +71,29 @@
                                     <constraint firstAttribute="height" constant="50" id="Hx8-AO-NF9"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Next"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Status"/>
                                 <connections>
                                     <segue destination="T7X-63-G9w" kind="show" id="yAw-XA-QLB"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckV-Tn-AJV">
+                                <rect key="frame" x="0.0" y="746" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YUA-vq-Szx"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Bulk Request"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WOh-GP-uAr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="YrS-Sj-j9s" firstAttribute="top" secondItem="JCt-6S-BEm" secondAttribute="bottom" id="5RS-6k-VrM"/>
                             <constraint firstItem="WOh-GP-uAr" firstAttribute="bottom" secondItem="YrS-Sj-j9s" secondAttribute="bottom" constant="20" id="C5Q-r0-p2B"/>
+                            <constraint firstItem="ckV-Tn-AJV" firstAttribute="top" secondItem="JCt-6S-BEm" secondAttribute="bottom" id="F3e-DD-PH8"/>
                             <constraint firstItem="JCt-6S-BEm" firstAttribute="trailing" secondItem="WOh-GP-uAr" secondAttribute="trailing" id="HTH-bC-3Cg"/>
+                            <constraint firstItem="ckV-Tn-AJV" firstAttribute="leading" secondItem="WOh-GP-uAr" secondAttribute="leading" id="I4Y-Y3-aHR"/>
+                            <constraint firstItem="WOh-GP-uAr" firstAttribute="trailing" secondItem="ckV-Tn-AJV" secondAttribute="trailing" id="Kje-rG-E6a"/>
+                            <constraint firstItem="YrS-Sj-j9s" firstAttribute="top" secondItem="ckV-Tn-AJV" secondAttribute="bottom" constant="20" id="LJL-CF-MwT"/>
                             <constraint firstItem="YrS-Sj-j9s" firstAttribute="leading" secondItem="WOh-GP-uAr" secondAttribute="leading" id="S8Y-sq-g2M"/>
                             <constraint firstItem="JCt-6S-BEm" firstAttribute="top" secondItem="WOh-GP-uAr" secondAttribute="top" id="e7l-1a-pwh"/>
                             <constraint firstItem="WOh-GP-uAr" firstAttribute="trailing" secondItem="YrS-Sj-j9s" secondAttribute="trailing" id="wKX-7u-xr0"/>
