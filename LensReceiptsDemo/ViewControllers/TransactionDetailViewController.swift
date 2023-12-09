@@ -32,6 +32,12 @@ class TransactionDetailViewController: UIViewController {
 
     }
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+
+    }
+    
+    
     @IBAction func splitEqualButtonTapped(_ sender: Any) {
         guard let vc = UIStoryboard(name: "Receipts", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReceiptVC") as? ReceiptVC else { return }
 

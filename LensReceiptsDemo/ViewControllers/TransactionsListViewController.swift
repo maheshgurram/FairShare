@@ -17,7 +17,11 @@ class TransactionsListViewController: UIViewController {
 
     }
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
 
+    }
+    
     /*
     // MARK: - Navigation
 
