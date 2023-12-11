@@ -17,6 +17,7 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var contacts: [Contact] = []
     var selRowItem: Int? = nil
     var transactionNumber: Int?
+    var isSplitEqual: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +47,23 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.receiptTableView.register(nib, forCellReuseIdentifier: "LineItemCell")
     }
     
+    func createSelfContact() -> Contact {
+        var selfUser = Contact()
+        selfUser.name = "Self"
+        selfUser.phone = "9081238975"
+        return selfUser
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let initiateRequestVC = segue.destination as? InitiateRequestViewController else { return }
         
         if let items = rowItems {
-            let selectedItems = items.filter{ item in item.assignedUsers?.count ?? 0 > 0 }
-                initiateRequestVC.selectedItemsForSplit = selectedItems
+            var selectedItems = items.filter{ item in item.assignedUsers?.count ?? 0 > 0 }
+            if let isSplitEqual = isSplitEqual, isSplitEqual {
+                selectedItems[0].assignedUsers?.append(createSelfContact())
+            }
+            initiateRequestVC.selectedItemsForSplit = selectedItems
+            initiateRequestVC.transactionNumber = self.transactionNumber
         }
         
     }

@@ -30,6 +30,7 @@
 		E868AB0D2B22553B007885BD /* DeeplinkHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868AB0A2B22553A007885BD /* DeeplinkHandlerProtocol.swift */; };
 		E868AB0E2B22553B007885BD /* DeeplinkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868AB0B2B22553A007885BD /* DeeplinkCoordinator.swift */; };
 		E868AB0F2B22553B007885BD /* FareShareDeeplinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868AB0C2B22553B007885BD /* FareShareDeeplinkHandler.swift */; };
+		E868AB132B2654AD007885BD /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868AB122B2654AD007885BD /* RequestData.swift */; };
 		E88391782B17882500E3934F /* InitiateRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88391772B17882500E3934F /* InitiateRequestViewController.swift */; };
 		E883917B2B179D0600E3934F /* SplitItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88391792B179D0600E3934F /* SplitItemTableViewCell.swift */; };
 		E883917C2B179D0600E3934F /* SplitItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E883917A2B179D0600E3934F /* SplitItemTableViewCell.xib */; };
@@ -73,6 +74,7 @@
 		E868AB0A2B22553A007885BD /* DeeplinkHandlerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeeplinkHandlerProtocol.swift; sourceTree = "<group>"; };
 		E868AB0B2B22553A007885BD /* DeeplinkCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeeplinkCoordinator.swift; sourceTree = "<group>"; };
 		E868AB0C2B22553B007885BD /* FareShareDeeplinkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareShareDeeplinkHandler.swift; sourceTree = "<group>"; };
+		E868AB122B2654AD007885BD /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
 		E88391772B17882500E3934F /* InitiateRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateRequestViewController.swift; sourceTree = "<group>"; };
 		E88391792B179D0600E3934F /* SplitItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitItemTableViewCell.swift; sourceTree = "<group>"; };
 		E883917A2B179D0600E3934F /* SplitItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplitItemTableViewCell.xib; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				3D303C0F2AFC2A2400507DD7 /* JSONSaveLoad.swift */,
 				3D303C112AFD23C400507DD7 /* ReceiptData.swift */,
 				3D303C1D2AFD8F9C00507DD7 /* Contact.swift */,
+				E868AB122B2654AD007885BD /* RequestData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				E88391782B17882500E3934F /* InitiateRequestViewController.swift in Sources */,
 				9D53207127ECC35C0067CE79 /* AppDelegate.swift in Sources */,
 				E8CE49D72B0530BC009ED9E7 /* DashboardViewController.swift in Sources */,
+				E868AB132B2654AD007885BD /* RequestData.swift in Sources */,
 				3D303C252AFD98C100507DD7 /* ContactCell.swift in Sources */,
 				9D53207327ECC35C0067CE79 /* SceneDelegate.swift in Sources */,
 				E868AB0D2B22553B007885BD /* DeeplinkHandlerProtocol.swift in Sources */,

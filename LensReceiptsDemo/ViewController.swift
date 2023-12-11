@@ -10,7 +10,8 @@ import VeryfiLens
 
 class ViewController: UIViewController {
     @IBOutlet weak var logsTextView: UITextView!
-    
+    var transactionNumber: Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +41,12 @@ class ViewController: UIViewController {
         // USe this to avoid uploading receipt
         let json = try? JSONSerialization.loadJSON(withFilename: "receipt") as? [String : Any]
         parseReceiptData(json)
+        
+#if targetEnvironment(simulator)
+    if let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path {
+        print("Documents Directory: \(documentsPath)")
+    }
+#endif
     }
     
     func string(from json: [String : Any]) -> String? {
@@ -70,6 +77,7 @@ class ViewController: UIViewController {
         // Filter out items which doens't have total
 //        vc.receiptData = receiptData
         vc.rowItems = receiptData?.data?.items
+        vc.transactionNumber = transactionNumber
         navigationController?.pushViewController(vc, animated: true)
         
         

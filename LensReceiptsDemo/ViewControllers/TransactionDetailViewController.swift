@@ -32,6 +32,14 @@ class TransactionDetailViewController: UIViewController {
 
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let verifyVC = segue.destination as? ViewController else { return }
+        
+        verifyVC.transactionNumber = 5708
+
+    }
+    
+    
     @IBAction func backButtonTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
 
@@ -40,7 +48,7 @@ class TransactionDetailViewController: UIViewController {
     
     @IBAction func splitEqualButtonTapped(_ sender: Any) {
         guard let vc = UIStoryboard(name: "Receipts", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReceiptVC") as? ReceiptVC else { return }
-
+        
         // Create RowItem
         var rowItem = RowItem()
         rowItem.text = "TWIN ROCKS SPRING WATER"
@@ -49,9 +57,13 @@ class TransactionDetailViewController: UIViewController {
         rowItem.description = "TWIN ROCKS SPRING WATER"
         rowItem.assignedUsers = []
         vc.rowItems = [rowItem]
+        
         vc.transactionNumber = 5709
+        vc.isSplitEqual = true
+        
         navigationController?.pushViewController(vc, animated: true)
     }
+    
     
 
 }

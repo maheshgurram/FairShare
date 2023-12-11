@@ -27,14 +27,18 @@ class SplitItemWithContactsTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func configureView(with contact: Contact, amount: Double) {
+    func configureView(with contact: Contact, amount: Double, isSelf: Bool) {
         self.contact = contact
         self.amount = amount
         contactNameLabel.text = contact.name
         amountLabel.text = "owes  \(amount)"
+        requestButton.titleLabel?.text = isSelf ? "Auto Settle" : "Send Request"
     }
     
-    @IBAction func sendRequestButtonClicked(_ sender: Any) {
+    @IBAction func sendRequestButtonClicked(_ sender: UIButton) {
+//        if sender.titleLabel?.text == "Auto Settle" {
+//            sender.titleLabel?.text = "Sent"
+//        } // might have to reload tableview
         delegate?.sendRequestSelected(for: contact, with: amount)
         
     }

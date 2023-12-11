@@ -12,7 +12,10 @@ class InitiateRequestViewController: UIViewController {
     @IBOutlet weak var splitTableView: UITableView!
     
     var selectedItemsForSplit: [RowItem]?
-    
+    var transactionNumber : Int?
+    var requestDict: [String: Any] = [:]
+    var topLevelArray: [Any] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,11 +44,23 @@ class InitiateRequestViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let requestStatusVC = segue.destination as? TransferRequestStatusViewController else { return }
         requestStatusVC.selectedItemsForSplit = selectedItemsForSplit
+        requestStatusVC.transactionNumber = transactionNumber
     }
     
-    func saveFileWithDetails() {
-//        let isSaved = try? JSONSerialization.save(jsonObject: json, toFilename: "receipt")
-
+    func createFileWithDetails(transactionId: Int, name: String, amount: Double, status: String) {
+        //fileName == transaction#.json
+        // array of dict of every transfer
+        
+        var transactionDict: [String : Any] = [:]
+        transactionDict["transactionId"] = transactionId
+        transactionDict["name"] = name
+        transactionDict["transfer_amount"] = amount
+        transactionDict["status"] = status
+        
+        topLevelArray.append(transactionDict)
+        requestDict["requests"] = topLevelArray
+        
+        let isSaved = try? JSONSerialization.save(jsonObject: requestDict, toFilename: "\(transactionId)")
     }
 
 
@@ -77,7 +92,11 @@ extension InitiateRequestViewController: UITableViewDataSource, UITableViewDeleg
             // add logic to divide the total cost
             let individualSplit = (Double(quantity) * totalCost) / Double(assignedUsers.count)
             
-            cell.configureView(with: assignedUsers[indexPath.row], amount: individualSplit)
+            var isSelfUser = false
+            if assignedUsers[indexPath.row].name == "Self" {
+                isSelfUser = true
+            }
+            cell.configureView(with: assignedUsers[indexPath.row], amount: individualSplit, isSelf: isSelfUser)
             cell.delegate = self
         }
         
@@ -102,9 +121,12 @@ extension InitiateRequestViewController: UITableViewDataSource, UITableViewDeleg
 
 extension InitiateRequestViewController : SendRequestDelegate {
     func sendRequestSelected(for contact: Contact?, with amount: Double?) {
-        // create a local file to save the details
-        saveFileWithDetails()
         
+        // create a local file to save the details
+        if let id = transactionNumber, let name = contact?.name, let amount = amount {
+            createFileWithDetails(transactionId: id, name: name, amount: amount, status: "Approved")
+        }
+        /*
         // Prepare URL
         let url = URL(string: "https://rest.nexmo.com/sms/json")
         guard let requestUrl = url else { fatalError() }
@@ -146,6 +168,7 @@ extension InitiateRequestViewController : SendRequestDelegate {
             }
         }
         task.resume()
+        */
         
     }
     

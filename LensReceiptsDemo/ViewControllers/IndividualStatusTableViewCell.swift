@@ -24,11 +24,10 @@ class IndividualStatusTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureView(with contact: Contact, amount: Double) {
-//        self.contact = contact
-//        self.amount = amount
+    func configureView(with contact: Contact, amount: Double, status: String? = "Pending") {
         contactNameLabel.text = contact.name
         requestedAmountLabel.text = "request for \(amount)"
+        statusLabel.text = status
     }
     
 }
