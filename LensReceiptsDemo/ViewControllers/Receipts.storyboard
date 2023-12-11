@@ -112,7 +112,7 @@
         <!--Transfer Request Status View Controller-->
         <scene sceneID="Ei4-kt-g9d">
             <objects>
-                <viewController id="T7X-63-G9w" customClass="TransferRequestStatusViewController" customModule="LensReceiptsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TransferRequestStatusVC" id="T7X-63-G9w" customClass="TransferRequestStatusViewController" customModule="LensReceiptsDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="adf-3a-v4Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

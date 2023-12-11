@@ -302,6 +302,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="gQy-c3-Yfd" eventType="touchUpInside" id="N8y-RE-PWa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aeR-io-6iH"/>

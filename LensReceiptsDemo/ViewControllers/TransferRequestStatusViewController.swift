@@ -70,42 +70,32 @@ extension TransferRequestStatusViewController: UITableViewDataSource, UITableVie
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return selectedItemsForSplit?.count ?? 0
+        return 1 //selectedItemsForSplit?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let items = selectedItemsForSplit,
-              let assignedUsers = items[section].assignedUsers else { return 0 }
-        return assignedUsers.count
+//        guard let items = selectedItemsForSplit,
+//              let assignedUsers = items[section].assignedUsers else { return 0 }
+        return requestArray?.count ?? 0
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IndividualStatusTableViewCell", for: indexPath) as! IndividualStatusTableViewCell
         
-        if let items = selectedItemsForSplit,
-           let assignedUsers = items[indexPath.section].assignedUsers,
-           let totalCost = items[indexPath.section].total,
-           let quantity = items[indexPath.section].quantity {
+        if let items = requestArray,
+           let assignedUsers = items[indexPath.row].name,
+           let amount = items[indexPath.row].transferAmount,
+           let status = items[indexPath.row].status {
             
-            // add logic to divide the total cost
-            let individualSplit = (Double(quantity) * totalCost) / Double(assignedUsers.count)
-            
-            var status = ""
-            if let requestArray = requestArray {
-                for eachRequest in requestArray {
-                    print("eachRequest ->", eachRequest)
-                    status = assignedUsers[indexPath.row].name == eachRequest.name ? eachRequest.status ?? "Pending" : "Pending"
-                }
-            }
-            
-            cell.configureView(with: assignedUsers[indexPath.row], amount: individualSplit, status: status)
+            cell.configureView(with: assignedUsers, amount: amount, status: status)
             //            cell.delegate = self
         }
         
         return cell
     }
     
+    // Remove this header and group by same person
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SplitItemTableViewCell") as? SplitItemTableViewCell else { return UIView() }
         
