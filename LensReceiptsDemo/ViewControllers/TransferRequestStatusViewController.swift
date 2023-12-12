@@ -11,7 +11,7 @@ class TransferRequestStatusViewController: UIViewController {
     
     @IBOutlet weak var requestStatusTableView: UITableView!
     
-    var selectedItemsForSplit: [RowItem]?
+//    var selectedItemsForSplit: [RowItem]?
     var transactionNumber : Int?
     var requestArray: [IndividualRequestData]?
     
@@ -70,12 +70,10 @@ extension TransferRequestStatusViewController: UITableViewDataSource, UITableVie
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1 //selectedItemsForSplit?.count ?? 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let items = selectedItemsForSplit,
-//              let assignedUsers = items[section].assignedUsers else { return 0 }
         return requestArray?.count ?? 0
         
     }
@@ -95,6 +93,7 @@ extension TransferRequestStatusViewController: UITableViewDataSource, UITableVie
         return cell
     }
     
+    /*
     // Remove this header and group by same person
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SplitItemTableViewCell") as? SplitItemTableViewCell else { return UIView() }
@@ -104,7 +103,7 @@ extension TransferRequestStatusViewController: UITableViewDataSource, UITableVie
         }
         
         return headerView
-    }
+    } */
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40.0
