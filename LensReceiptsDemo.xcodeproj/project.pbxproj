@@ -62,7 +62,7 @@
 		3D303C212AFD964300507DD7 /* Contacts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contacts.storyboard; sourceTree = "<group>"; };
 		3D303C232AFD98C100507DD7 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		3D303C242AFD98C100507DD7 /* ContactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
-		9D53206D27ECC35C0067CE79 /* LensReceiptsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LensReceiptsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D53206D27ECC35C0067CE79 /* Bofa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bofa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D53207027ECC35C0067CE79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D53207227ECC35C0067CE79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9D53207427ECC35C0067CE79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 		9D53206E27ECC35C0067CE79 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9D53206D27ECC35C0067CE79 /* LensReceiptsDemo.app */,
+				9D53206D27ECC35C0067CE79 /* Bofa.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,7 +228,7 @@
 			);
 			name = LensReceiptsDemo;
 			productName = LensReceiptsDemo;
-			productReference = 9D53206D27ECC35C0067CE79 /* LensReceiptsDemo.app */;
+			productReference = 9D53206D27ECC35C0067CE79 /* Bofa.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -550,7 +550,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nirali.LensReceiptsDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bofa;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -589,7 +589,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nirali.LensReceiptsDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bofa;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
