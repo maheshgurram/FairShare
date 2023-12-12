@@ -73,6 +73,24 @@ class InitiateRequestViewController: UIViewController {
         let isSaved = try? JSONSerialization.save(jsonObject: requestDict, toFilename: "\(transactionId)")
     }
     
+    @IBAction func bulkRequestSelected(_ sender: Any) {
+        // create a local file to save the details
+        guard let items = selectedItemsForSplit else { return }
+        for item in items {
+            if let assignedUsers = item.assignedUsers,
+               let totalCost = item.total,
+               let quantity = item.quantity {
+                
+                // add logic to divide the total cost
+                let individualSplit = (Double(quantity) * totalCost) / Double(assignedUsers.count)
+                for user in assignedUsers {
+                    if let id = transactionNumber, let name = user.name {
+                        createFileWithDetails(transactionId: id, name: name, amount: individualSplit, status: "Paid")
+                    }
+                }
+            }}
+    }
+    
     
     // check here - start
     func groupByAssignedUser(rowItem: RowItem) {
