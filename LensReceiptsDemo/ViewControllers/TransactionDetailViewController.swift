@@ -9,9 +9,11 @@ import UIKit
 
 class TransactionDetailViewController: UIViewController {
     
+    @IBOutlet weak var transactionDetailImageView: UIImageView!
     @IBOutlet weak var splitButton: UIButton!
     @IBOutlet weak var splitEqualButton: UIButton!
     var isJSONFilePresent: Bool = false
+    var isSplitItemized: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,12 @@ class TransactionDetailViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         setupUI()
         
+        
+#if targetEnvironment(simulator)
+    if let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path {
+        print("Documents Directory: \(documentsPath)")
+    }
+#endif
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,11 +59,16 @@ class TransactionDetailViewController: UIViewController {
         splitEqualButton.layer.masksToBounds = true
         splitEqualButton.clipsToBounds = true
         
+        if isSplitItemized {
+            transactionDetailImageView.image = UIImage(named: "SplitItemizedTransactionDetailScreen")
+        } else {
+            transactionDetailImageView.image = UIImage(named: "TransactionDetailScreen")
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let verifyVC = segue.destination as? ViewController else { return }
-        
         verifyVC.transactionNumber = 5708
         
     }
@@ -65,7 +78,8 @@ class TransactionDetailViewController: UIViewController {
         navigationController?.popViewController(animated: true)
         
     }
-    
+// SPLIT EQUAL = 5709
+// SPLIT ITEMIZED = 5708
     
     @IBAction func splitEqualButtonTapped(_ sender: Any) {
         if isJSONFilePresent {
@@ -79,10 +93,10 @@ class TransactionDetailViewController: UIViewController {
             
             // Create RowItem
             var rowItem = RowItem()
-            rowItem.text = "TWIN ROCKS SPRING WATER"
-            rowItem.total = 39.95
+            rowItem.text = "CHICK-FIL-A #04591"
+            rowItem.total = 6.17
             rowItem.quantity = 1
-            rowItem.description = "TWIN ROCKS SPRING WATER"
+            rowItem.description = "CHICK-FIL-A #04591"
             rowItem.assignedUsers = []
             vc.rowItems = [rowItem]
             

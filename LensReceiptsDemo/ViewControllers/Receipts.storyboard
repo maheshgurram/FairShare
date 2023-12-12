@@ -82,7 +82,7 @@
                                     <constraint firstAttribute="height" constant="50" id="YUA-vq-Szx"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Bulk Request"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Bulk Zelle Request"/>
                                 <connections>
                                     <action selector="bulkRequestSelected:" destination="kPj-kt-Giv" eventType="touchUpInside" id="lGS-QC-raI"/>
                                 </connections>

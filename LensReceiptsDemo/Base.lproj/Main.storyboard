@@ -226,9 +226,9 @@
                                 <rect key="frame" x="0.0" y="38" width="414" height="858"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBi-my-87u">
-                                <rect key="frame" x="0.0" y="238" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="248" width="414" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="33o-Hs-iuj"/>
+                                    <constraint firstAttribute="height" constant="80" id="33o-Hs-iuj"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
@@ -249,6 +249,17 @@
                                     <action selector="backButtonTapped:" destination="06m-2m-lA5" eventType="touchUpInside" id="Bsn-MO-djQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ba-s8-tLy">
+                                <rect key="frame" x="0.0" y="168" width="414" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Fe1-er-jTJ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="splitItemizedTransactionSelected:" destination="06m-2m-lA5" eventType="touchUpInside" id="Sy8-lx-Khe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ykT-jB-BSQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -257,11 +268,14 @@
                             <constraint firstItem="k6x-O8-WwP" firstAttribute="leading" secondItem="ykT-jB-BSQ" secondAttribute="leading" constant="25" id="EsS-Pg-foY"/>
                             <constraint firstItem="Qb3-Wz-XEs" firstAttribute="leading" secondItem="ykT-jB-BSQ" secondAttribute="leading" id="QML-Ig-aXY"/>
                             <constraint firstItem="TBi-my-87u" firstAttribute="leading" secondItem="ykT-jB-BSQ" secondAttribute="leading" id="Zbb-Ks-4V4"/>
+                            <constraint firstItem="TBi-my-87u" firstAttribute="top" secondItem="9ba-s8-tLy" secondAttribute="bottom" id="Zdz-hr-B1E"/>
                             <constraint firstItem="ykT-jB-BSQ" firstAttribute="bottom" secondItem="Qb3-Wz-XEs" secondAttribute="bottom" constant="-34" id="eWM-a0-7pJ"/>
-                            <constraint firstItem="TBi-my-87u" firstAttribute="top" secondItem="ykT-jB-BSQ" secondAttribute="top" constant="150" id="jyj-wu-5uB"/>
+                            <constraint firstItem="TBi-my-87u" firstAttribute="top" secondItem="ykT-jB-BSQ" secondAttribute="top" constant="160" id="jyj-wu-5uB"/>
                             <constraint firstItem="k6x-O8-WwP" firstAttribute="top" secondItem="jrC-lq-EnL" secondAttribute="top" constant="100" id="owg-Bx-H6Y"/>
+                            <constraint firstItem="9ba-s8-tLy" firstAttribute="leading" secondItem="ykT-jB-BSQ" secondAttribute="leading" id="qJz-Uz-jvU"/>
                             <constraint firstItem="Qb3-Wz-XEs" firstAttribute="top" secondItem="ykT-jB-BSQ" secondAttribute="top" constant="-50" id="uvA-h2-Wsk"/>
                             <constraint firstItem="ykT-jB-BSQ" firstAttribute="trailing" secondItem="TBi-my-87u" secondAttribute="trailing" id="wxm-Pa-Yyg"/>
+                            <constraint firstItem="ykT-jB-BSQ" firstAttribute="trailing" secondItem="9ba-s8-tLy" secondAttribute="trailing" id="xvM-cq-kKf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qc9-Hs-3fJ"/>
@@ -273,7 +287,7 @@
         <!--Transaction Detail View Controller-->
         <scene sceneID="3zb-9T-gwM">
             <objects>
-                <viewController id="gQy-c3-Yfd" customClass="TransactionDetailViewController" customModule="LensReceiptsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TransactionDetailVC" id="gQy-c3-Yfd" customClass="TransactionDetailViewController" customModule="LensReceiptsDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5pu-mM-Kwe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -345,6 +359,7 @@
                     <connections>
                         <outlet property="splitButton" destination="VQK-bs-Wme" id="za9-h2-oR9"/>
                         <outlet property="splitEqualButton" destination="gTB-BS-phQ" id="MXO-GT-hHG"/>
+                        <outlet property="transactionDetailImageView" destination="ZD7-QA-log" id="kYv-hX-dKW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q2i-0j-C0s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

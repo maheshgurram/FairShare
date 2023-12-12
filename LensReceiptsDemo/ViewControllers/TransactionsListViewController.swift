@@ -22,6 +22,12 @@ class TransactionsListViewController: UIViewController {
 
     }
     
+    @IBAction func splitItemizedTransactionSelected(_ sender: Any) {
+        guard let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TransactionDetailVC") as? TransactionDetailViewController else { return }
+        vc.isSplitItemized = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 
