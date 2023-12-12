@@ -31,7 +31,7 @@ class SplitItemWithContactsTableViewCell: UITableViewCell {
         self.contact = contact
         contactNameLabel.text = contact.name
         amountLabel.text = "owes  \(contact.total ?? 0)"
-        isSelf ? requestButton.setTitle("Auto Settle", for: .normal) : requestButton.setTitle("Send Request", for: .normal)
+        isSelf ? requestButton.setTitle("Auto Settle", for: .normal) : requestButton.setTitle("Zelle Request", for: .normal)
     }
     
     @IBAction func sendRequestButtonClicked(_ sender: UIButton) {

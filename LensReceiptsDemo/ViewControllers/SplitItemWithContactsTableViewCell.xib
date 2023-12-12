@@ -34,9 +34,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edi-Mr-iAW">
-                                <rect key="frame" x="220" y="0.0" width="150" height="44"/>
+                                <rect key="frame" x="242" y="0.0" width="128" height="44"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Zelle Request -&gt;"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Zelle Request"/>
                                 <connections>
                                     <action selector="sendRequestButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dxV-VV-qg8"/>
                                 </connections>

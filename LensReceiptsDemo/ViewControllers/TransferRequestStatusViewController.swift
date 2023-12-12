@@ -35,6 +35,7 @@ class TransferRequestStatusViewController: UIViewController {
         requestStatusTableView.rowHeight = UITableView.automaticDimension
         
         requestStatusTableView.register(UINib.init(nibName: "IndividualStatusTableViewCell", bundle: nil), forCellReuseIdentifier: "IndividualStatusTableViewCell")
+        requestStatusTableView.register(UINib.init(nibName: "SplitItemTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "SplitItemTableViewCell")
         
     }
     
@@ -95,62 +96,28 @@ extension TransferRequestStatusViewController: UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let items = selectedItemsForSplit,
-           
-            let assignedUsers = items[indexPath.section].assignedUsers,
-           
-            let totalCost = items[indexPath.section].total,
-           
-            let quantity = items[indexPath.section].quantity {
-            
-            
-            
-            // add logic to divide the total cost
-            
-            let individualSplit = (Double(quantity) * totalCost) / Double(assignedUsers.count)
-            
-            
-            
-            print(assignedUsers[indexPath.row].name ?? "")
-            
-            print(individualSplit)
-            
-            
+        if let items = requestArray,
+            let assignedUsers = items[indexPath.row].name,
+            let totalCost = items[indexPath.row].transferAmount {
             
             let viewController: OverviewViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OverviewViewController") as! OverviewViewController
             
-            viewController.approver = assignedUsers[indexPath.row].name ?? ""
-            
-            viewController.price = individualSplit
-            
-            
+            viewController.approver = assignedUsers
+            viewController.price = totalCost
             
             self.navigationController?.pushViewController(viewController, animated: true)
-            
-        }
-        
-        
-        
-        
-        
-        if let itemsCopy = selectedItemsForSplit![indexPath.section].assignedUsers {
-            
-            print(itemsCopy[indexPath.row])
-            
         }
     }
     
-    /*
     // Remove this header and group by same person
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SplitItemTableViewCell") as? SplitItemTableViewCell else { return UIView() }
         
-        if let items = selectedItemsForSplit, let title = items[section].text {
-            headerView.configureView(with: title)
-        }
+        headerView.configureView(with: "Status:")
+        
         
         return headerView
-    } */
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40.0

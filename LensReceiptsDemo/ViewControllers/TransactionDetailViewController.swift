@@ -12,7 +12,8 @@ class TransactionDetailViewController: UIViewController {
     @IBOutlet weak var transactionDetailImageView: UIImageView!
     @IBOutlet weak var splitButton: UIButton!
     @IBOutlet weak var splitEqualButton: UIButton!
-    var isJSONFilePresent: Bool = false
+    var isJSONFile5708Present: Bool = false
+    var isJSONFile5709Present: Bool = false
     var isSplitItemized: Bool = false
     
     override func viewDidLoad() {
@@ -32,20 +33,39 @@ class TransactionDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let json = try? JSONSerialization.loadJSON(withFilename: "5709") as? [String : Any]
-        if json != nil {
-            isJSONFilePresent = true
-            splitButton.isHidden = true
-            splitEqualButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-            splitEqualButton.setTitle("VIEW STATUS", for: .normal)
+        if isSplitItemized {
+            let json = try? JSONSerialization.loadJSON(withFilename: "5708") as? [String : Any]
+            if json != nil {
+                isJSONFile5708Present = true
+                splitButton.isHidden = true
+                splitEqualButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+                splitEqualButton.setTitle("VIEW STATUS", for: .normal)
+
+            } else {
+                isJSONFile5708Present = false
+                splitButton.isHidden = false
+                splitEqualButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+                splitEqualButton.setTitle("SPLIT EQUAL", for: .normal)
+                splitButton.setTitle("SPLIT", for: .normal)
+            }
 
         } else {
-            isJSONFilePresent = false
-            splitButton.isHidden = false
-            splitEqualButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-            splitEqualButton.setTitle("SPLIT EQUAL", for: .normal)
-            splitButton.setTitle("SPLIT", for: .normal)
-            
+            let json = try? JSONSerialization.loadJSON(withFilename: "5709") as? [String : Any]
+            if json != nil {
+                isJSONFile5709Present = true
+                splitButton.isHidden = true
+                splitEqualButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+                splitEqualButton.setTitle("VIEW STATUS", for: .normal)
+
+            } else {
+                isJSONFile5709Present = false
+                splitButton.isHidden = false
+                splitEqualButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+                splitEqualButton.setTitle("SPLIT EQUAL", for: .normal)
+                splitButton.setTitle("SPLIT", for: .normal)
+                
+            }
+
         }
         
     }
@@ -67,12 +87,11 @@ class TransactionDetailViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let verifyVC = segue.destination as? ViewController else { return }
-        verifyVC.transactionNumber = 5708
-        
-    }
-    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let verifyVC = segue.destination as? ViewController else { return }
+//        verifyVC.transactionNumber = 5708
+//        
+//    }
     
     @IBAction func backButtonTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -81,8 +100,24 @@ class TransactionDetailViewController: UIViewController {
 // SPLIT EQUAL = 5709
 // SPLIT ITEMIZED = 5708
     
+    
+    @IBAction func splitButtonTapped(_ sender: Any) {
+        if isJSONFile5708Present {
+            guard let vc = UIStoryboard(name: "Receipts", bundle: Bundle.main).instantiateViewController(withIdentifier: "TransferRequestStatusVC") as? TransferRequestStatusViewController else { return }
+            vc.transactionNumber = 5708
+            
+            navigationController?.pushViewController(vc, animated: true)
+            
+        } else {
+            guard let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ViewControllerVC") as? ViewController else { return }
+            vc.transactionNumber = 5708
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     @IBAction func splitEqualButtonTapped(_ sender: Any) {
-        if isJSONFilePresent {
+        if isJSONFile5709Present {
             guard let vc = UIStoryboard(name: "Receipts", bundle: Bundle.main).instantiateViewController(withIdentifier: "TransferRequestStatusVC") as? TransferRequestStatusViewController else { return }
             vc.transactionNumber = 5709
             
