@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2W-f5-ho1">
-                        <rect key="frame" x="16.000000000000007" y="11.666666666666664" width="109.66666666666669" height="21"/>
+                        <rect key="frame" x="16" y="11.666666666666664" width="81.333333333333314" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -44,6 +44,7 @@
                     <constraint firstItem="d2W-f5-ho1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Lil-oC-R1Y"/>
                     <constraint firstItem="1f0-Na-ONt" firstAttribute="centerY" secondItem="d2W-f5-ho1" secondAttribute="centerY" id="Tep-T2-gfh"/>
                     <constraint firstItem="1f0-Na-ONt" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="cAm-r6-zMT"/>
+                    <constraint firstItem="1f0-Na-ONt" firstAttribute="leading" secondItem="d2W-f5-ho1" secondAttribute="trailing" id="ocV-Z6-35c"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

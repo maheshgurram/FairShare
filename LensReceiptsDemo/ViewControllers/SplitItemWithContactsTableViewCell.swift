@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SendRequestDelegate: NSObjectProtocol {
-    func sendRequestSelected(for contact: Contact?, with amount: Double?)
+    func sendRequestSelected(for cell: SplitItemWithContactsTableViewCell, contact: Contact?, with amount: Double?)
 }
 
 class SplitItemWithContactsTableViewCell: UITableViewCell {
@@ -27,19 +27,16 @@ class SplitItemWithContactsTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func configureView(with contact: Contact, amount: Double, isSelf: Bool) {
+    func configureView(with contact: Contact, isSelf: Bool) {
         self.contact = contact
-        self.amount = amount
         contactNameLabel.text = contact.name
-        amountLabel.text = "owes  \(amount)"
-        requestButton.titleLabel?.text = isSelf ? "Auto Settle" : "Send Request"
+        amountLabel.text = "owes  \(contact.total ?? 0)"
+        isSelf ? requestButton.setTitle("Auto Settle", for: .normal) : requestButton.setTitle("Send Request", for: .normal)
     }
     
     @IBAction func sendRequestButtonClicked(_ sender: UIButton) {
-//        if sender.titleLabel?.text == "Auto Settle" {
-//            sender.titleLabel?.text = "Sent"
-//        } // might have to reload tableview
-        delegate?.sendRequestSelected(for: contact, with: amount)
+        requestButton.isEnabled = false
+        delegate?.sendRequestSelected(for: self, contact: contact, with: contact?.total)
         
     }
 }

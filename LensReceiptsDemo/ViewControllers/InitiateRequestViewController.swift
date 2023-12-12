@@ -75,28 +75,19 @@ class InitiateRequestViewController: UIViewController {
     
     @IBAction func bulkRequestSelected(_ sender: Any) {
         // create a local file to save the details
-        guard let items = selectedItemsForSplit else { return }
-        for item in items {
-            if let assignedUsers = item.assignedUsers,
-               let totalCost = item.total,
-               let quantity = item.quantity {
+        for item in assignedUsersGroupNames {
+            if let id = transactionNumber, let name = item.name, let amount = item.total {
+                createFileWithDetails(transactionId: id, name: name, amount: amount, status: "Paid")
                 
-                // add logic to divide the total cost
-                let individualSplit = (Double(quantity) * totalCost) / Double(assignedUsers.count)
-                for user in assignedUsers {
-                    if let id = transactionNumber, let name = user.name {
-                        createFileWithDetails(transactionId: id, name: name, amount: individualSplit, status: "Paid")
-                    }
-                }
-            }}
+            }
+        }
     }
     
     
     // check here - start
     func groupByAssignedUser(rowItem: RowItem) {
         if let assignedUsers = rowItem.assignedUsers,
-           let totalCost = rowItem.total,
-           let quantity = rowItem.quantity {
+           let totalCost = rowItem.total {
             
             // add logic to divide the total cost
             let individualSplit = Double(totalCost) / Double(assignedUsers.count)
@@ -108,7 +99,7 @@ class InitiateRequestViewController: UIViewController {
                         // Exists in array, append the item price to user total
                         if let index = assignedUsersGroupNames.firstIndex(where: { $0.name == user.name }) {
                             var con = assignedUsersGroupNames[index]
-                            con.total = (con.total ?? 0) + individualSplit
+                            con.total = ((con.total ?? 0) + individualSplit).rounded(toPlaces: 2)
                             
                             assignedUsersGroupNames.remove(at: index)
                             assignedUsersGroupNames.append(con)
@@ -117,20 +108,9 @@ class InitiateRequestViewController: UIViewController {
                     } else {
                         // Add the user in array and update total to item price
                         var con = user
-                        con.total = individualSplit
+                        con.total = individualSplit.rounded(toPlaces: 2)
                         assignedUsersGroupNames.append(con)
                     }
-                    
-//
-//
-//                    if assignedUsersGroupDict[user.name ?? ""] != nil {
-//                        assignedUsersGroupNames.append(User(name: user.name, amount: individualSplit))
-//
-//                    } else {
-//                        assignedUsersGroupDict[user.name ?? ""] = []
-//                        assignedUsersGroupNames.append(User(name: user.name, amount: individualSplit))
-//                        assignedUsersGroupDict[user.name ?? ""]?.append(assignedUsersGroupNames)
-//                    }
                 }
             }
         }
@@ -157,62 +137,45 @@ extension InitiateRequestViewController: UITableViewDataSource, UITableViewDeleg
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return selectedItemsForSplit?.count ?? 0
+        return 1 //selectedItemsForSplit?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let items = selectedItemsForSplit,
-              let assignedUsers = items[section].assignedUsers else { return 0 }
-        return assignedUsers.count
+        return assignedUsersGroupNames.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SplitItemWithContactsTableViewCell", for: indexPath) as! SplitItemWithContactsTableViewCell
-        
-        if let items = selectedItemsForSplit,
-           let assignedUsers = items[indexPath.section].assignedUsers,
-           let totalCost = items[indexPath.section].total,
-           let quantity = items[indexPath.section].quantity {
-            
-            // add logic to divide the total cost
-            let individualSplit = (Double(quantity) * totalCost) / Double(assignedUsers.count)
             
             var isSelfUser = false
-            if assignedUsers[indexPath.row].name == "Self" {
+            if assignedUsersGroupNames[indexPath.row].name == "Self" {
                 isSelfUser = true
             }
-            cell.configureView(with: assignedUsers[indexPath.row], amount: individualSplit, isSelf: isSelfUser)
+            cell.configureView(with: assignedUsersGroupNames[indexPath.row], isSelf: isSelfUser)
             cell.delegate = self
-        }
+        
         
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SplitItemTableViewCell") as? SplitItemTableViewCell else { return UIView() }
         
-        if let items = selectedItemsForSplit, let title = items[section].text {
-            headerView.configureView(with: title)
-        }
-        
+        headerView.configureView(with: "Split Total")
         return headerView
     }
+     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40.0
     }
+     
     
 }
 
 extension InitiateRequestViewController : SendRequestDelegate {
-    
-    func sendRequestSelected(for contact: Contact?, with amount: Double?) {
-        // create a local file to save the details
-        if let id = transactionNumber, let name = contact?.name, let amount = amount {
-            createFileWithDetails(transactionId: id, name: name, amount: amount, status: "Paid")
-        }
-    }
     
     func sendRequestSelected(for cell: SplitItemWithContactsTableViewCell, contact: Contact?, with amount: Double?) {
         guard let index = splitTableView.indexPath(for: cell) else { return }
