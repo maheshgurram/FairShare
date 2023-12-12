@@ -152,11 +152,11 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginScreen" translatesAutoresizingMaskIntoConstraints="NO" id="A9c-Qa-pJf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="42" width="414" height="854"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8NP-dJ-g12"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.58981934342054732" green="0.58882444818583557" blue="0.60620278980314124" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="A9c-Qa-pJf" secondAttribute="bottom" id="NDf-rR-691"/>
                             <constraint firstItem="0OX-oT-Wg4" firstAttribute="leading" secondItem="a5z-w7-nVF" secondAttribute="leading" id="Vol-XS-CRe"/>
@@ -164,7 +164,7 @@
                             <constraint firstItem="0OX-oT-Wg4" firstAttribute="top" secondItem="8NP-dJ-g12" secondAttribute="top" constant="150" id="bVg-0w-iOi"/>
                             <constraint firstAttribute="trailing" secondItem="A9c-Qa-pJf" secondAttribute="trailing" id="iKh-7B-Mri"/>
                             <constraint firstAttribute="trailing" secondItem="0OX-oT-Wg4" secondAttribute="trailing" id="ksi-9U-Sjd"/>
-                            <constraint firstItem="A9c-Qa-pJf" firstAttribute="top" secondItem="a5z-w7-nVF" secondAttribute="top" id="s8x-Nl-Pyn"/>
+                            <constraint firstItem="A9c-Qa-pJf" firstAttribute="top" secondItem="8NP-dJ-g12" secondAttribute="top" constant="-50" id="s8x-Nl-Pyn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jTA-bl-HGi"/>
@@ -182,7 +182,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DashboardScreen" translatesAutoresizingMaskIntoConstraints="NO" id="jaX-G6-7R2">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="42" width="414" height="854"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9CB-6p-wy0">
                                 <rect key="frame" x="0.0" y="723" width="414" height="80"/>
@@ -201,7 +201,7 @@
                         <constraints>
                             <constraint firstItem="syJ-fA-CrY" firstAttribute="bottom" secondItem="jaX-G6-7R2" secondAttribute="bottom" constant="-34" id="7X1-Hw-zNm"/>
                             <constraint firstItem="syJ-fA-CrY" firstAttribute="trailing" secondItem="jaX-G6-7R2" secondAttribute="trailing" id="8RL-24-Eeq"/>
-                            <constraint firstItem="jaX-G6-7R2" firstAttribute="top" secondItem="syJ-fA-CrY" secondAttribute="top" constant="-92" id="DaC-ZQ-Ulv"/>
+                            <constraint firstItem="jaX-G6-7R2" firstAttribute="top" secondItem="syJ-fA-CrY" secondAttribute="top" constant="-50" id="DaC-ZQ-Ulv"/>
                             <constraint firstItem="syJ-fA-CrY" firstAttribute="trailing" secondItem="9CB-6p-wy0" secondAttribute="trailing" id="Pxg-Vr-BLn"/>
                             <constraint firstItem="jaX-G6-7R2" firstAttribute="leading" secondItem="syJ-fA-CrY" secondAttribute="leading" id="Yhi-2h-sDl"/>
                             <constraint firstItem="syJ-fA-CrY" firstAttribute="bottom" secondItem="9CB-6p-wy0" secondAttribute="bottom" constant="59" id="jpd-Ry-GK6"/>
@@ -223,7 +223,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TransactionListScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Qb3-Wz-XEs">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="42" width="414" height="854"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBi-my-87u">
                                 <rect key="frame" x="0.0" y="259" width="414" height="80"/>
@@ -260,7 +260,7 @@
                             <constraint firstItem="ykT-jB-BSQ" firstAttribute="bottom" secondItem="Qb3-Wz-XEs" secondAttribute="bottom" constant="-34" id="eWM-a0-7pJ"/>
                             <constraint firstItem="TBi-my-87u" firstAttribute="top" secondItem="ykT-jB-BSQ" secondAttribute="top" constant="167" id="jyj-wu-5uB"/>
                             <constraint firstItem="k6x-O8-WwP" firstAttribute="top" secondItem="jrC-lq-EnL" secondAttribute="top" constant="100" id="owg-Bx-H6Y"/>
-                            <constraint firstItem="Qb3-Wz-XEs" firstAttribute="top" secondItem="ykT-jB-BSQ" secondAttribute="top" constant="-92" id="uvA-h2-Wsk"/>
+                            <constraint firstItem="Qb3-Wz-XEs" firstAttribute="top" secondItem="ykT-jB-BSQ" secondAttribute="top" constant="-50" id="uvA-h2-Wsk"/>
                             <constraint firstItem="ykT-jB-BSQ" firstAttribute="trailing" secondItem="TBi-my-87u" secondAttribute="trailing" id="wxm-Pa-Yyg"/>
                         </constraints>
                     </view>
@@ -621,11 +621,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DashboardScreen" width="621" height="1344"/>
-        <image name="FaceIdScreen" width="621" height="1344"/>
-        <image name="LoginScreen" width="621" height="1344"/>
-        <image name="TransactionDetailScreen" width="621" height="1344"/>
-        <image name="TransactionListScreen" width="621" height="1344"/>
+        <image name="DashboardScreen" width="479.5" height="990"/>
+        <image name="FaceIdScreen" width="478" height="990"/>
+        <image name="LoginScreen" width="478" height="990"/>
+        <image name="TransactionDetailScreen" width="478" height="990"/>
+        <image name="TransactionListScreen" width="479.5" height="990"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">

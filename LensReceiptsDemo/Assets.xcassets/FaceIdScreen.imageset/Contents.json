@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "IMG_6876.jpg",
+      "filename" : "faceId.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "IMG_6876 1.jpg",
+      "filename" : "faceId 1.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "IMG_6876 2.jpg",
+      "filename" : "faceId 2.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }
