@@ -83,6 +83,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Bulk Request"/>
+                                <connections>
+                                    <action selector="bulkRequestSelected:" destination="kPj-kt-Giv" eventType="touchUpInside" id="lGS-QC-raI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WOh-GP-uAr"/>

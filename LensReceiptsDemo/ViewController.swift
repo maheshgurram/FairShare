@@ -14,6 +14,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        logsTextView.isHidden = true
         
         let CLIENT_ID = "vrfYhNuWenXeFdsKPLICX3SFRR0hmzTsRXdBjDR" //getEnvironmentVar(key: "vrfYhNuWenXeFdsKPLICX3SFRR0hmzTsRXdBjDR") // replace with your assigned Client Id
         let AUTH_USERNAME = "mahesh.gurram12"// getEnvironmentVar(key: "mahesh.gurram12") // replace with your assigned Username
@@ -32,21 +33,25 @@ class ViewController: UIViewController {
         
         VeryfiLens.shared().configure(with: credentials, settings: settings)
     }
-
+    
+    
+    @IBAction func scanReceiptButtonTapped(_ sender: Any) {
+        // this can be used to scan new receipt
+        VeryfiLens.shared().showCamera(in: self)
+        
+    }
+    
 
     @IBAction func launchLens(_ sender: Any) {
-        // this can be used to scan new receipt
-//        VeryfiLens.shared().showCamera(in: self)
-        
-        // USe this to avoid uploading receipt
-        let json = try? JSONSerialization.loadJSON(withFilename: "receipt") as? [String : Any]
-        parseReceiptData(json)
         
 #if targetEnvironment(simulator)
     if let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path {
         print("Documents Directory: \(documentsPath)")
     }
 #endif
+        // USe this to avoid uploading receipt
+        let json = try? JSONSerialization.loadJSON(withFilename: "receipt") as? [String : Any]
+        parseReceiptData(json)
     }
     
     func string(from json: [String : Any]) -> String? {
@@ -75,7 +80,6 @@ class ViewController: UIViewController {
         
         guard let vc = UIStoryboard(name: "Receipts", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReceiptVC") as? ReceiptVC else { return }
         // Filter out items which doens't have total
-//        vc.receiptData = receiptData
         vc.rowItems = receiptData?.data?.items
         vc.transactionNumber = transactionNumber
         navigationController?.pushViewController(vc, animated: true)

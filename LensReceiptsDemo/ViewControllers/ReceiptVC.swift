@@ -12,8 +12,7 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var receiptTableView: UITableView!
     
-//    var receiptData: ReceiptData? = nil
-    var rowItems: [RowItem]? 
+    var rowItems: [RowItem]?
     var contacts: [Contact] = []
     var selRowItem: Int? = nil
     var transactionNumber: Int?
@@ -40,9 +39,7 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         receiptTableView.translatesAutoresizingMaskIntoConstraints = false
         receiptTableView.estimatedRowHeight = 50
         receiptTableView.rowHeight = UITableView.automaticDimension
-        
-//        title = receiptData?.data?.vendor?.rawName
-            
+                    
         let nib = UINib.init(nibName: "LineItemCell", bundle: nil)
         self.receiptTableView.register(nib, forCellReuseIdentifier: "LineItemCell")
     }

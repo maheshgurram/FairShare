@@ -29,14 +29,14 @@
                                     <action selector="launchLens:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TWR-Ul-rcu"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Tap on the bellow button to try out Lens!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fKZ-Ub-Rvx">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Tap on the bellow button to try out Lens!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fKZ-Ub-Rvx">
                                 <rect key="frame" x="20" y="112" width="374" height="269"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7yL-3L-X2p">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7yL-3L-X2p">
                                 <rect key="frame" x="107" y="532" width="200" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="TpO-VR-ver"/>
@@ -55,6 +55,8 @@
                         <constraints>
                             <constraint firstItem="fKZ-Ub-Rvx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="CRS-jc-TPr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fKZ-Ub-Rvx" secondAttribute="trailing" constant="20" id="Cxj-3K-aWI"/>
+                            <constraint firstItem="7yL-3L-X2p" firstAttribute="top" secondItem="fKZ-Ub-Rvx" secondAttribute="bottom" constant="151" id="cvA-87-xTU"/>
+                            <constraint firstItem="06q-tJ-Bv5" firstAttribute="centerX" secondItem="7yL-3L-X2p" secondAttribute="centerX" id="kCP-cw-Qm5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="06q-tJ-Bv5" secondAttribute="bottom" constant="100" id="lJG-Se-jCQ"/>
                             <constraint firstItem="fKZ-Ub-Rvx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="nCp-4o-voK"/>
                             <constraint firstItem="06q-tJ-Bv5" firstAttribute="top" secondItem="7yL-3L-X2p" secondAttribute="bottom" constant="150" id="nSk-X8-jWP"/>
