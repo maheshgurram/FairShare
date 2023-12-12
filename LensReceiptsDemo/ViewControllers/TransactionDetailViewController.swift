@@ -28,14 +28,15 @@ class TransactionDetailViewController: UIViewController {
         if json != nil {
             isJSONFilePresent = true
             splitButton.isHidden = true
-            splitEqualButton.setTitle("SUMMARY", for: .normal)
-            splitEqualButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14.0)
-            
+            splitEqualButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+            splitEqualButton.setTitle("VIEW STATUS", for: .normal)
+
         } else {
             isJSONFilePresent = false
             splitButton.isHidden = false
+            splitEqualButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             splitEqualButton.setTitle("SPLIT EQUAL", for: .normal)
-            splitEqualButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14.0)
+            splitButton.setTitle("SPLIT", for: .normal)
             
         }
         
