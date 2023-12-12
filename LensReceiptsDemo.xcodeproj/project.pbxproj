@@ -31,6 +31,7 @@
 		E868AB0E2B22553B007885BD /* DeeplinkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868AB0B2B22553A007885BD /* DeeplinkCoordinator.swift */; };
 		E868AB0F2B22553B007885BD /* FareShareDeeplinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868AB0C2B22553B007885BD /* FareShareDeeplinkHandler.swift */; };
 		E868AB132B2654AD007885BD /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868AB122B2654AD007885BD /* RequestData.swift */; };
+		E868AB152B28AF5D007885BD /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E868AB142B28AF5D007885BD /* OverviewViewController.swift */; };
 		E88391782B17882500E3934F /* InitiateRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88391772B17882500E3934F /* InitiateRequestViewController.swift */; };
 		E883917B2B179D0600E3934F /* SplitItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88391792B179D0600E3934F /* SplitItemTableViewCell.swift */; };
 		E883917C2B179D0600E3934F /* SplitItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E883917A2B179D0600E3934F /* SplitItemTableViewCell.xib */; };
@@ -75,6 +76,7 @@
 		E868AB0B2B22553A007885BD /* DeeplinkCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeeplinkCoordinator.swift; sourceTree = "<group>"; };
 		E868AB0C2B22553B007885BD /* FareShareDeeplinkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareShareDeeplinkHandler.swift; sourceTree = "<group>"; };
 		E868AB122B2654AD007885BD /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
+		E868AB142B28AF5D007885BD /* OverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		E88391772B17882500E3934F /* InitiateRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateRequestViewController.swift; sourceTree = "<group>"; };
 		E88391792B179D0600E3934F /* SplitItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitItemTableViewCell.swift; sourceTree = "<group>"; };
 		E883917A2B179D0600E3934F /* SplitItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplitItemTableViewCell.xib; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		3D303C152AFD4B0300507DD7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E868AB142B28AF5D007885BD /* OverviewViewController.swift */,
 				E868AB0B2B22553A007885BD /* DeeplinkCoordinator.swift */,
 				E868AB0A2B22553A007885BD /* DeeplinkHandlerProtocol.swift */,
 				E868AB0C2B22553B007885BD /* FareShareDeeplinkHandler.swift */,
@@ -355,6 +358,7 @@
 				E868AB0F2B22553B007885BD /* FareShareDeeplinkHandler.swift in Sources */,
 				E8CE49D52B052B3A009ED9E7 /* LoginViewController.swift in Sources */,
 				E8CE49DB2B054D1A009ED9E7 /* TransactionDetailViewController.swift in Sources */,
+				E868AB152B28AF5D007885BD /* OverviewViewController.swift in Sources */,
 				E8CE49D92B05356A009ED9E7 /* TransactionsListViewController.swift in Sources */,
 				3D303C1E2AFD8F9C00507DD7 /* Contact.swift in Sources */,
 				3D303C142AFD4AC500507DD7 /* ReceiptVC.swift in Sources */,

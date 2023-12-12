@@ -53,7 +53,7 @@ class InitiateRequestViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let requestStatusVC = segue.destination as? TransferRequestStatusViewController else { return }
-        //        requestStatusVC.selectedItemsForSplit = selectedItemsForSplit
+        requestStatusVC.selectedItemsForSplit = selectedItemsForSplit
         requestStatusVC.transactionNumber = transactionNumber
     }
     

@@ -11,7 +11,7 @@ class TransferRequestStatusViewController: UIViewController {
     
     @IBOutlet weak var requestStatusTableView: UITableView!
     
-//    var selectedItemsForSplit: [RowItem]?
+    var selectedItemsForSplit: [RowItem]?
     var transactionNumber : Int?
     var requestArray: [IndividualRequestData]?
     
@@ -91,6 +91,53 @@ extension TransferRequestStatusViewController: UITableViewDataSource, UITableVie
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let items = selectedItemsForSplit,
+           
+            let assignedUsers = items[indexPath.section].assignedUsers,
+           
+            let totalCost = items[indexPath.section].total,
+           
+            let quantity = items[indexPath.section].quantity {
+            
+            
+            
+            // add logic to divide the total cost
+            
+            let individualSplit = (Double(quantity) * totalCost) / Double(assignedUsers.count)
+            
+            
+            
+            print(assignedUsers[indexPath.row].name ?? "")
+            
+            print(individualSplit)
+            
+            
+            
+            let viewController: OverviewViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OverviewViewController") as! OverviewViewController
+            
+            viewController.approver = assignedUsers[indexPath.row].name ?? ""
+            
+            viewController.price = individualSplit
+            
+            
+            
+            self.navigationController?.pushViewController(viewController, animated: true)
+            
+        }
+        
+        
+        
+        
+        
+        if let itemsCopy = selectedItemsForSplit![indexPath.section].assignedUsers {
+            
+            print(itemsCopy[indexPath.row])
+            
+        }
     }
     
     /*
