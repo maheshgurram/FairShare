@@ -22,7 +22,7 @@ class InitiateRequestViewController: UIViewController {
     var requestDict: [String: Any] = [:]
     var topLevelArray: [Any] = []
     
-    var assignedUsersGroupNames : [User] = []
+    var assignedUsersGroupNames : [Contact] = []
     var assignedUsersGroupDict: [String: [[User]]] = [:] // [contactname: [rowitems]]
     
     override func viewDidLoad() {
@@ -99,18 +99,38 @@ class InitiateRequestViewController: UIViewController {
            let quantity = rowItem.quantity {
             
             // add logic to divide the total cost
-            let individualSplit = (Double(quantity) * totalCost) / Double(assignedUsers.count)
+            let individualSplit = Double(totalCost) / Double(assignedUsers.count)
             
             if let assignedUsers = rowItem.assignedUsers {
                 for user in assignedUsers {
-                    if assignedUsersGroupDict[user.name ?? ""] != nil {
-                        assignedUsersGroupNames.append(User(name: user.name, amount: individualSplit))
+                    
+                    if assignedUsersGroupNames.contains(where: { $0.name == user.name }) {
+                        // Exists in array, append the item price to user total
+                        if let index = assignedUsersGroupNames.firstIndex(where: { $0.name == user.name }) {
+                            var con = assignedUsersGroupNames[index]
+                            con.total = (con.total ?? 0) + individualSplit
+                            
+                            assignedUsersGroupNames.remove(at: index)
+                            assignedUsersGroupNames.append(con)
+                        }
                         
                     } else {
-                        assignedUsersGroupDict[user.name ?? ""] = []
-                        assignedUsersGroupNames.append(User(name: user.name, amount: individualSplit))
-                        assignedUsersGroupDict[user.name ?? ""]?.append(assignedUsersGroupNames)
+                        // Add the user in array and update total to item price
+                        var con = user
+                        con.total = individualSplit
+                        assignedUsersGroupNames.append(con)
                     }
+                    
+//
+//
+//                    if assignedUsersGroupDict[user.name ?? ""] != nil {
+//                        assignedUsersGroupNames.append(User(name: user.name, amount: individualSplit))
+//
+//                    } else {
+//                        assignedUsersGroupDict[user.name ?? ""] = []
+//                        assignedUsersGroupNames.append(User(name: user.name, amount: individualSplit))
+//                        assignedUsersGroupDict[user.name ?? ""]?.append(assignedUsersGroupNames)
+//                    }
                 }
             }
         }
@@ -186,6 +206,14 @@ extension InitiateRequestViewController: UITableViewDataSource, UITableViewDeleg
 }
 
 extension InitiateRequestViewController : SendRequestDelegate {
+    
+    func sendRequestSelected(for contact: Contact?, with amount: Double?) {
+        // create a local file to save the details
+        if let id = transactionNumber, let name = contact?.name, let amount = amount {
+            createFileWithDetails(transactionId: id, name: name, amount: amount, status: "Paid")
+        }
+    }
+    
     func sendRequestSelected(for cell: SplitItemWithContactsTableViewCell, contact: Contact?, with amount: Double?) {
         guard let index = splitTableView.indexPath(for: cell) else { return }
         
