@@ -13,6 +13,7 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var receiptTableView: UITableView!
     
     var rowItems: [RowItem]?
+    var taxesAndTip: Double?
     var contacts: [Contact] = []
     var selRowItem: Int? = nil
     var transactionNumber: Int?
@@ -28,6 +29,7 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         setupUI()
+        prepareTaxRowItem()
     }
     
     func setupUI() {
@@ -49,6 +51,16 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         selfUser.name = "Self"
         selfUser.phone = "9081238975"
         return selfUser
+    }
+    
+    func prepareTaxRowItem() {
+        guard let taxAmount = taxesAndTip, taxAmount != 0 else { return }
+        
+        var rowItem = RowItem()
+        rowItem.quantity = 1
+        rowItem.description = "Taxes and Tips"
+        rowItem.total = taxAmount
+        rowItems?.append(rowItem)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -73,7 +85,7 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowItems?.count ?? 0
+        return rowItems?.count ?? 0 + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

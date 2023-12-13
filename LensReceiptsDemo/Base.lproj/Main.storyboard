@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewControllerVC" id="BYZ-38-t0r" customClass="ViewController" customModule="LensReceiptsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewControllerVC" id="BYZ-38-t0r" customClass="ViewController" customModule="Bofa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,7 +45,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Scan Receipt"/>
                                 <connections>
-                                    <action selector="launchLens:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ls4-6B-JMr"/>
                                     <action selector="scanReceiptButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bxe-Q3-EI0"/>
                                 </connections>
                             </button>
@@ -93,7 +92,7 @@
         <!--Face Id View Controller-->
         <scene sceneID="fxR-6J-bdh">
             <objects>
-                <viewController id="wxu-p1-iO7" customClass="FaceIdViewController" customModule="LensReceiptsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wxu-p1-iO7" customClass="FaceIdViewController" customModule="Bofa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yip-Zg-RhM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,7 +133,7 @@
         <!--Login View Controller-->
         <scene sceneID="drp-JY-rGN">
             <objects>
-                <viewController id="aFW-DH-vXl" customClass="LoginViewController" customModule="LensReceiptsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aFW-DH-vXl" customClass="LoginViewController" customModule="Bofa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a5z-w7-nVF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -176,7 +175,7 @@
         <!--Dashboard View Controller-->
         <scene sceneID="YbW-91-yl9">
             <objects>
-                <viewController id="d50-q1-FPy" customClass="DashboardViewController" customModule="LensReceiptsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="d50-q1-FPy" customClass="DashboardViewController" customModule="Bofa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wUF-Td-Bpf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,17 +194,31 @@
                                     <segue destination="06m-2m-lA5" kind="show" id="QG5-Sl-qAf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0Q-gI-EW4">
+                                <rect key="frame" x="324" y="782" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="QCa-pw-rHy"/>
+                                    <constraint firstAttribute="height" constant="80" id="qTE-mW-bym"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="clearDataSelected:" destination="d50-q1-FPy" eventType="touchUpInside" id="8mj-KL-IUn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="syJ-fA-CrY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="syJ-fA-CrY" firstAttribute="bottom" secondItem="jaX-G6-7R2" secondAttribute="bottom" constant="-34" id="7X1-Hw-zNm"/>
+                            <constraint firstItem="syJ-fA-CrY" firstAttribute="bottom" secondItem="o0Q-gI-EW4" secondAttribute="bottom" id="8Kw-HC-VtP"/>
                             <constraint firstItem="syJ-fA-CrY" firstAttribute="trailing" secondItem="jaX-G6-7R2" secondAttribute="trailing" id="8RL-24-Eeq"/>
                             <constraint firstItem="jaX-G6-7R2" firstAttribute="top" secondItem="syJ-fA-CrY" secondAttribute="top" constant="-50" id="DaC-ZQ-Ulv"/>
                             <constraint firstItem="syJ-fA-CrY" firstAttribute="trailing" secondItem="9CB-6p-wy0" secondAttribute="trailing" id="Pxg-Vr-BLn"/>
                             <constraint firstItem="jaX-G6-7R2" firstAttribute="leading" secondItem="syJ-fA-CrY" secondAttribute="leading" id="Yhi-2h-sDl"/>
                             <constraint firstItem="syJ-fA-CrY" firstAttribute="bottom" secondItem="9CB-6p-wy0" secondAttribute="bottom" constant="70" id="jpd-Ry-GK6"/>
                             <constraint firstItem="9CB-6p-wy0" firstAttribute="leading" secondItem="syJ-fA-CrY" secondAttribute="leading" id="q2X-6O-uFn"/>
+                            <constraint firstItem="syJ-fA-CrY" firstAttribute="trailing" secondItem="o0Q-gI-EW4" secondAttribute="trailing" constant="10" id="q6O-eV-paX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9r8-b2-9vN"/>
@@ -217,7 +230,7 @@
         <!--Transactions List View Controller-->
         <scene sceneID="dJQ-26-bI2">
             <objects>
-                <viewController id="06m-2m-lA5" customClass="TransactionsListViewController" customModule="LensReceiptsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="06m-2m-lA5" customClass="TransactionsListViewController" customModule="Bofa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jrC-lq-EnL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -287,7 +300,7 @@
         <!--Transaction Detail View Controller-->
         <scene sceneID="3zb-9T-gwM">
             <objects>
-                <viewController storyboardIdentifier="TransactionDetailVC" id="gQy-c3-Yfd" customClass="TransactionDetailViewController" customModule="LensReceiptsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TransactionDetailVC" id="gQy-c3-Yfd" customClass="TransactionDetailViewController" customModule="Bofa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5pu-mM-Kwe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -369,7 +382,7 @@
         <!--Overview View Controller-->
         <scene sceneID="DfA-0p-Stz">
             <objects>
-                <viewController storyboardIdentifier="OverviewViewController" id="wdt-1v-dTp" customClass="OverviewViewController" customModule="LensReceiptsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OverviewViewController" id="wdt-1v-dTp" customClass="OverviewViewController" customModule="Bofa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iHk-GV-IrA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

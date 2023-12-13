@@ -35,7 +35,7 @@ class TransactionDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         if isSplitItemized {
             let json = try? JSONSerialization.loadJSON(withFilename: "5708") as? [String : Any]
-            if json != nil {
+            if json?.keys != nil {
                 isJSONFile5708Present = true
                 splitButton.isHidden = true
                 splitEqualButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -51,7 +51,7 @@ class TransactionDetailViewController: UIViewController {
 
         } else {
             let json = try? JSONSerialization.loadJSON(withFilename: "5709") as? [String : Any]
-            if json != nil {
+            if json?.keys != nil {
                 isJSONFile5709Present = true
                 splitButton.isHidden = true
                 splitEqualButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -97,8 +97,8 @@ class TransactionDetailViewController: UIViewController {
         navigationController?.popViewController(animated: true)
         
     }
-// SPLIT EQUAL = 5709
-// SPLIT ITEMIZED = 5708
+// SPLIT EQUAL = 5709 = 6.17
+// SPLIT ITEMIZED = 5708 = 10.95
     
     
     @IBAction func splitButtonTapped(_ sender: Any) {
