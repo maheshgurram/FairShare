@@ -13,7 +13,8 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var receiptTableView: UITableView!
     
     var rowItems: [RowItem]?
-    var taxesAndTip: Double?
+    var taxes: Double?
+    var tips: Double?
     var contacts: [Contact] = []
     var selRowItem: Int? = nil
     var transactionNumber: Int?
@@ -30,6 +31,7 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         setupUI()
         prepareTaxRowItem()
+        prepareTipsRowItem()
     }
     
     func setupUI() {
@@ -54,12 +56,22 @@ class ReceiptVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func prepareTaxRowItem() {
-        guard let taxAmount = taxesAndTip, taxAmount != 0 else { return }
+        guard let taxAmount = taxes, taxAmount != 0 else { return }
         
         var rowItem = RowItem()
         rowItem.quantity = 1
-        rowItem.description = "Taxes and Tips"
+        rowItem.description = "Taxes"
         rowItem.total = taxAmount
+        rowItems?.append(rowItem)
+    }
+    
+    func prepareTipsRowItem() {
+        guard let tipAmount = tips, tipAmount != 0 else { return }
+        
+        var rowItem = RowItem()
+        rowItem.quantity = 1
+        rowItem.description = "Tips"
+        rowItem.total = tipAmount
         rowItems?.append(rowItem)
     }
     

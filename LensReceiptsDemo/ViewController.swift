@@ -14,7 +14,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        logsTextView.isHidden = true
+        logsTextView.isHidden = true
         
         let CLIENT_ID = "vrfYhNuWenXeFdsKPLICX3SFRR0hmzTsRXdBjDR" //getEnvironmentVar(key: "vrfYhNuWenXeFdsKPLICX3SFRR0hmzTsRXdBjDR") // replace with your assigned Client Id
         let AUTH_USERNAME = "mahesh.gurram12"// getEnvironmentVar(key: "mahesh.gurram12") // replace with your assigned Username
@@ -74,7 +74,8 @@ class ViewController: UIViewController {
         guard let vc = UIStoryboard(name: "Receipts", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReceiptVC") as? ReceiptVC else { return }
         // Filter out items which doens't have total
         vc.rowItems = receiptData?.data?.items
-        vc.taxesAndTip = (receiptData?.data?.tax ?? 0) + (receiptData?.data?.tip ?? 0)
+        vc.taxes = receiptData?.data?.tax
+        vc.tips = receiptData?.data?.tip
         vc.transactionNumber = transactionNumber
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -83,13 +84,13 @@ class ViewController: UIViewController {
 extension ViewController: VeryfiLensDelegate {
     func veryfiLensClose(_ json: [String : Any]) {
         if let string = string(from: json) {
-            logsTextView.text.append("\n\(string)")
+//            logsTextView.text.append("\n\(string)")
         }
     }
     
     func veryfiLensError(_ json: [String : Any]) {
         if let string = string(from: json) {
-            logsTextView.text.append("\n\(string)")
+//            logsTextView.text.append("\n\(string)")
         }
     }
     
@@ -99,13 +100,13 @@ extension ViewController: VeryfiLensDelegate {
         parseReceiptData(json)
         
         if let string = string(from: json) {
-            logsTextView.text.append("\n\(string)")
+//            logsTextView.text.append("\n\(string)")
         }
     }
     
     func veryfiLensUpdate(_ json: [String : Any]) {
         if let string = string(from: json) {
-            logsTextView.text.append("\n\(string)")
+//            logsTextView.text.append("\n\(string)")
         }
     }
 }
